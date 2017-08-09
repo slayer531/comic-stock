@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import './index.css';
 import SupplierList from './Components/SupplierList';
-import DeleteImage from './images/delete-x-square-button.png';
 import api from './api'
 
 class ComicStrip extends React.Component{
@@ -43,17 +41,14 @@ class ComicStrip extends React.Component{
         </div>
         ); */
          /* console.log("This is the value " + this.state.supplierData[0]);  */
-         console.log(Array.isArray(this.state.supplierData));
+         /* console.log(Array.isArray(this.state.supplierData)); */
 
         return(
             <div className="app">
                 <div className="banner">
                     <h1>Need to put a menu in here</h1>
                 </div>
-                <div>Name</div>
-                <div>City</div>
-                <div>Reference</div>
-                <SupplierList></SupplierList>
+                <SupplierList />
                 {/* <div className="main">
                     {this.state.supplierData.map((supplier,index)  =>(
                         <div>

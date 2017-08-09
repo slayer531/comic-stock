@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import DeleteImage from '../images/delete-x-square-button.png';
 import api from '../api';
 import 'bootstrap/dist/css/bootstrap.css';
+import SupplierList from '../SupplierList'
 
-class SupplierList extends React.Component{
+class SupplierListContainer extends React.Component{
     constructor() {
         super();
         this.initialiseState();
@@ -28,23 +26,26 @@ class SupplierList extends React.Component{
         });
     }
 
-    DeleteSupplier(){
-        alert('test from Supplier Comp');
+    DeleteSupplier(index){
+        alert('test from Supplier Comp Testing: ' + index);
+        console.log(index);
+        /* let array = [
+                    { "name": "Joe", "age": 17 },
+                    { "name": "Joe", "age": 17 },
+                    { "name": "Carl", "age": 35 }
+                    ];
+        array.map(item => item.age)
+            .filter((value, index, self) => self.indexOf(value) === index)
+            console.log('testing filter: ' + array.map(item => item.age)
+            .filter((value, index, self) => self.indexOf(value) === index)); */
 
     };
 
     render() {
         return(
-            <div className="SupplierList">
-                {this.state.supplierData.map((supplier,index)  =>(
-                    <div>
-                        <div>{supplier.name} {supplier.city} {supplier.reference}</div>
-                        <div><img ref="#" src={DeleteImage} alt="delete me" onClick={this.DeleteSupplier} /></div>
-                    </div>                        
-                ))}                    
-            </div>
+            <SupplierList suppliers={this.state.supplierData} onClick={(i) => this.DeleteSupplier(i)} />            
         );
     }
 }
 
-export default SupplierList
+ export default SupplierListContainer 
