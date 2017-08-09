@@ -26,9 +26,23 @@ class SupplierListContainer extends React.Component{
         });
     }
 
+    EditSupplier(index){
+        alert('Supplier id about to edit: ' + index);
+    }
+    
     DeleteSupplier(index){
-        alert('test from Supplier Comp Testing: ' + index);
-        console.log(index);
+        alert('Supplier id about to delete: ' + index);
+
+        /* api.get('/Suppliers')
+                .then((response) => {
+                     this.setState({
+                         supplierData : response.data
+                        })
+        }).catch((e) =>
+        {
+            console.error(e);
+        }); */
+
         /* let array = [
                     { "name": "Joe", "age": 17 },
                     { "name": "Joe", "age": 17 },
@@ -43,7 +57,11 @@ class SupplierListContainer extends React.Component{
 
     render() {
         return(
-            <SupplierList suppliers={this.state.supplierData} onClick={(i) => this.DeleteSupplier(i)} />            
+            <SupplierList 
+                suppliers={this.state.supplierData} 
+                Delete={(i) => this.DeleteSupplier(i)}
+                Edit={(i) => this.EditSupplier(i)}
+            />            
         );
     }
 }

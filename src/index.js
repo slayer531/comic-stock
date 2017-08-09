@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import SupplierList from './Components/SupplierList';
-import api from './api'
+import SupplierDetail from './Components/SupplierDetail';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//import api from './api';
 
 class ComicStrip extends React.Component{
     constructor() {
@@ -11,12 +14,12 @@ class ComicStrip extends React.Component{
     }
 
     initialiseState(){
-        this.state = {supplierData : []}
+        this.state = {}
     }
 
-    componentDidMount() {
+     componentDidMount() {
         
-        api.get('/Suppliers')
+       /* api.get('/Suppliers')
                 .then((response) => {
                      this.setState({
                          supplierData : response.data
@@ -24,13 +27,8 @@ class ComicStrip extends React.Component{
         }).catch((e) =>
         {
             console.error(e);
-        });
-    }
-
-    DeleteSupplier(){
-        alert('test');
-
-    };
+        }); */
+    } 
 
     render() {
       /*   const Suppliers = ({supplier}) => (
@@ -48,15 +46,8 @@ class ComicStrip extends React.Component{
                 <div className="banner">
                     <h1>Need to put a menu in here</h1>
                 </div>
-                <SupplierList />
-                {/* <div className="main">
-                    {this.state.supplierData.map((supplier,index)  =>(
-                        <div>
-                            <div>{supplier.name} {supplier.city} {supplier.reference}</div>
-                            <div><img ref="#" src={DeleteImage} alt="delete me" onClick={this.DeleteSupplier} /></div>
-                        </div>                        
-                    ))}                    
-                </div> */}
+                <SupplierDetail />
+                <SupplierList />                
             </div>
         );
     }
