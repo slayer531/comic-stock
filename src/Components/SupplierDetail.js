@@ -15,25 +15,28 @@ class SupplierDetail extends React.Component{
     }
 
     SaveSupplier(index){
-        if(this.refs.id>0){
-            api.put('/Suppliers', {   
-                id: this.refs.id.value,             
-                name: this.refs.name.value,
-                city: this.refs.city.value,
-                reference: this.refs.reference.value
+        if(this.props.id>0){
+            console.log('finding the record: ' + this.props.id)
+            api.put('/Suppliers/' + this.props.id, {   
+                id: this.props.id,             
+                name: this.props.name,
+                city: this.props.city,
+                reference: this.props.reference
             })
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
+                alert('An error occurred while updating the record ' + error)
                 console.log(error);
             }); 
         }
         else{
-             api.post('/Suppliers', {                
-                name: this.props.name,
-                city: this.refs.city.value,
-                reference: this.refs.reference.value
+            console.log('new: ' + this.props.id)
+             api.post('/Suppliers', {          
+                  name: this.props.name,
+                  city: this.props.city,
+                  reference: this.props.reference
             })
             .then(function (response) {
                 console.log(response);                
@@ -57,13 +60,13 @@ class SupplierDetail extends React.Component{
         <div className="row">
             <div className="col-md-3">
                 <input className="hiddenControl" ref="id" value={this.props.id}></input>
-                <input type="text" ref="name" value={this.props.name} onChange={this.props.setName}></input>  
+                <input value={this.props.name} onChange={this.props.setName}></input>  
             </div>                                     
             <div className="col-md-3">
-                <input ref="city" value={this.props.city}></input>                                        
+                <input value={this.props.city} onChange={this.props.setCity}></input>                                        
             </div>
             <div className="col-md-3">
-                <input ref="reference" value={this.props.reference}></input>                    
+                <input value={this.props.reference} onChange={this.props.setReference}></input>                    
             </div>
             <div className="col-md-3">
                 <img src={SaveImage} alt="save me" onClick={(i) => this.SaveSupplier(i)} />                     

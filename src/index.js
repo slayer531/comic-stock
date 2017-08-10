@@ -10,7 +10,9 @@ class ComicStrip extends React.Component{
     constructor() {
         super();
         this.initialiseState();
-        this.setName = this.setName.bind(this)
+        this.setName = this.setName.bind(this);
+        this.setCity = this.setCity.bind(this);
+        this.setReference = this.setReference.bind(this);
     }
 
     initialiseState(){
@@ -51,13 +53,41 @@ class ComicStrip extends React.Component{
         })
     }
 
+    setCity (event) {
+        // make a copy of supplier
+        var supplier = { ...this.state.supplier }
+        // give it the new name
+        supplier.city = event.target.value
+        // push the new supplier into the state
+        this.setState({
+            supplier// we're using es6 so I don't need to do supplier: supplier
+        })
+    }
+
+    setReference(event){
+       // make a copy of supplier
+        var supplier = { ...this.state.supplier }
+        // give it the new name
+        supplier.reference = event.target.value
+        // push the new supplier into the state
+        this.setState({
+            supplier// we're using es6 so I don't need to do supplier: supplier
+        }) 
+    }
+
     render() {
         return(
             <div className="app">
                 <div className="banner">
                     <h1>Need to put a menu in here</h1>
                 </div>
-                <SupplierDetail setName={this.setName} id={this.state.supplier.id} name={this.state.supplier.name} city={this.state.supplier.city}  reference={this.state.supplier.reference}
+                <SupplierDetail setName={this.setName} 
+                                setCity={this.setCity}
+                                setReference={this.setReference}
+                                id={this.state.supplier.id} 
+                                name={this.state.supplier.name} 
+                                city={this.state.supplier.city}
+                                reference={this.state.supplier.reference}
                 />
                 <br/>
                 <SupplierList EditSupplier={(i) => this.EditSupplier(i)} />                
