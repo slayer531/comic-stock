@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+}
+
+.erdiv:nth-child(even) {
+    background: lightgrey;
+}
+
+.hiddenControl{
+  width: 0px;
+}
