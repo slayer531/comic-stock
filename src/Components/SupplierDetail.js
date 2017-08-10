@@ -3,7 +3,7 @@ import api from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 /* import SupplierDetail from '../SupplierDetail' */
 import SaveImage from './../images/save-resume.png';
-
+import CancelImage from './../images/delete-x-square-button.png'
 class SupplierDetail extends React.Component{
     constructor(props) {
         super(props);
@@ -35,7 +35,8 @@ class SupplierDetail extends React.Component{
                 <input value={this.props.reference} onChange={this.props.setReference}></input>                    
             </div>
             <div className="col-md-3">
-                <img src={SaveImage} alt="save me" onClick={(i) => this.props.SaveSupplier(i)} />                     
+                <img src={SaveImage} alt="save me" onClick={(i) => this.props.SaveSupplier(i)} />  
+                <img src={CancelImage} alt="cancel editing" onClick={(i) => this.props.Cancel(i)} />                     
             </div>
         </div>                     
     </div>
