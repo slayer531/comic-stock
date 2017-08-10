@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import SupplierList from '../SupplierList'
 
 class SupplierListContainer extends React.Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.initialiseState();
     }
 
@@ -13,46 +13,48 @@ class SupplierListContainer extends React.Component{
         this.state = {supplierData : []}
     }
 
-    componentDidMount() {
-        
+    GetSuppliers() {
         api.get('/Suppliers')
                 .then((response) => {
                      this.setState({
                          supplierData : response.data
                         })
-        }).catch((e) =>
-        {
-            console.error(e);
-        });
+                }).catch((e) =>
+                {
+                    console.error(e);
+                });
     }
 
-    EditSupplier(index){
-        alert('Supplier id about to edit: ' + index);
+    componentDidMount() {   
+        this.GetSuppliers();
     }
-    
+
+    /* EditSupplier(index){
+        
+    } */
+
     DeleteSupplier(index){
         alert('Supplier id about to delete: ' + index);
-
-        /* api.get('/Suppliers')
+        api({
+            method: 'delete',
+            url: '/Suppliers/' +  index
+            })
+        .then(((response)=> {
+            console.log(response);
+            api.get('/Suppliers')
                 .then((response) => {
-                     this.setState({
-                         supplierData : response.data
-                        })
-        }).catch((e) =>
-        {
-            console.error(e);
-        }); */
-
-        /* let array = [
-                    { "name": "Joe", "age": 17 },
-                    { "name": "Joe", "age": 17 },
-                    { "name": "Carl", "age": 35 }
-                    ];
-        array.map(item => item.age)
-            .filter((value, index, self) => self.indexOf(value) === index)
-            console.log('testing filter: ' + array.map(item => item.age)
-            .filter((value, index, self) => self.indexOf(value) === index)); */
-
+                    this.setState({
+                        supplierData : response.data
+                        })})
+                .catch((e) => {
+                    console.error(e);
+                }
+            );
+        }))
+        .catch(function (error) {
+            console.log(error);
+            console.log('failed to delete ' + index);
+        });
     };
 
     render() {
@@ -60,7 +62,8 @@ class SupplierListContainer extends React.Component{
             <SupplierList 
                 suppliers={this.state.supplierData} 
                 Delete={(i) => this.DeleteSupplier(i)}
-                Edit={(i) => this.EditSupplier(i)}
+                Edit={(i) => this.props.EditSupplier(i)}
+                /* Edit={(i) => this.EditSupplier(i)} */
             />            
         );
     }
