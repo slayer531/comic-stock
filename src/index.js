@@ -75,6 +75,40 @@ class ComicStrip extends React.Component{
         }) 
     }
 
+    SaveSupplier(index){        
+         if(this.state.supplier.id>0){
+            console.log('finding the record: ' + this.state.supplier.id)
+            api.put('/Suppliers/' + this.state.supplier.id, {   
+                id: this.state.supplier.id,             
+                name: this.state.supplier.name,
+                city: this.state.supplier.city,
+                reference: this.state.supplier.reference
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                alert('An error occurred while updating the record ' + error)
+                console.log(error);
+            }); 
+        }
+        else{
+            console.log('new: ' + this.state.supplier.id)
+             api.post('/Suppliers', {          
+                  name: this.state.supplier.name,
+                  city: this.state.supplier.city,
+                  reference: this.state.supplier.reference
+            })
+            .then(function (response) {
+                console.log(response);                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }); 
+        } 
+        
+    }
+
     render() {
         return(
             <div className="app">
@@ -88,6 +122,7 @@ class ComicStrip extends React.Component{
                                 name={this.state.supplier.name} 
                                 city={this.state.supplier.city}
                                 reference={this.state.supplier.reference}
+                                SaveSupplier = {(i) => this.SaveSupplier(i)}
                 />
                 <br/>
                 <SupplierList EditSupplier={(i) => this.EditSupplier(i)} />                
