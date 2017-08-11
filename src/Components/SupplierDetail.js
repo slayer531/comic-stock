@@ -1,51 +1,120 @@
 import React from 'react';
 import api from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* import SupplierDetail from '../SupplierDetail' */
-import SaveImage from './../images/save-resume.png';
-import CancelImage from './../images/delete-x-square-button.png'
-class SupplierDetail extends React.Component{
+import SupplierDetail from '../SupplierDetail'
+
+class SupplierDetailComponent extends React.Component{
     constructor(props) {
         super(props);
-        this.initialiseState();        
+        this.initialiseState();   
+        this.setName = this.setName.bind(this);
+        this.setCity = this.setCity.bind(this);
+        this.setReference = this.setReference.bind(this);     
     }
 
     initialiseState(){
-        this.state = { id:0, name:"", city:"", reference:"" }; 
+        this.state = {supplier:{"id":0, "name":"", "city":"", "reference":"" }}
+    }
+
+    CancelEdit(index){   
+        var Edit = {...this.state.Edit}
+        Edit = false;
+        this.setState({
+            Edit
+        });
+    }
+
+    SaveSupplier(index){        
+         if(this.state.supplier.id>0){
+            console.log('finding the record: ' + this.state.supplier.id)
+            api.put('/Suppliers/' + this.state.supplier.id, {   
+                id: this.state.supplier.id,             
+                name: this.state.supplier.name,
+                city: this.state.supplier.city,
+                reference: this.state.supplier.reference
+            })
+            .then(((response) => {
+                console.log(response);
+                var Saved = {...this.state.Saved}
+                Saved = true;
+                this.setState({
+                    Saved
+                });
+            }))
+            .catch(function (error) {
+                alert('An error occurred while updating the record ' + error)
+                console.log(error);
+            }); 
+        }
+        else{
+            console.log('new: ' + this.state.supplier.id)
+             api.post('/Suppliers', {          
+                  name: this.state.supplier.name,
+                  city: this.state.supplier.city,
+                  reference: this.state.supplier.reference
+            })
+            .then(function (response) {
+                
+                console.log(response);                
+            })
+            .catch(function (error) {
+                console.log(error);
+            }); 
+        }   
+    }
+
+    setName (event) {
+        // make a copy of supplier
+        var supplier = { ...this.state.supplier }
+        // give it the new name
+        console.log(event.target.value);
+        supplier.name = event.target.value
+        // push the new supplier into the state
+        this.setState({
+            supplier// we're using es6 so I don't need to do supplier: supplier
+        })
+    }
+
+    setCity (event) {
+        // make a copy of supplier
+        var supplier = { ...this.state.supplier }
+        // give it the new city
+        supplier.city = event.target.value
+        // push the new supplier into the state
+        this.setState({
+            supplier// we're using es6 so I don't need to do supplier: supplier
+        })
+    }
+
+    setReference(event){
+       // make a copy of supplier
+        var supplier = { ...this.state.supplier }
+        // give it the new reference
+        supplier.reference = event.target.value
+        // push the new supplier into the state
+        this.setState({
+            supplier
+        }) 
     }
 
     render() {
         return(
             <div>
-        <div className="row">
-            <div className="col-md-3">Name</div>
-            <div className="col-md-3">City</div>
-            <div className="col-md-3">Reference</div>
-            <div className="col-md-3">Save</div>
-        </div>
-        <div className="row">
-            <div className="col-md-3">
-                <input className="hiddenControl" ref="id" value={this.props.id}></input>
-                <input value={this.props.name} onChange={this.props.setName}></input>  
-            </div>                                     
-            <div className="col-md-3">
-                <input value={this.props.city} onChange={this.props.setCity}></input>                                        
+                 <SupplierDetail 
+                    id={this.props.id}
+                    name={this.props.name}
+                    city={this.props.city}
+                    reference={this.props.reference}
+                    SaveSupplier={(i) => this.SaveSupplier(i)}
+                    Cancel={(i) => this.Cancel(i)}
+                    setName={this.setName} 
+                    setCity={this.setCity}
+                    setReference={this.setReference}
+                />    
             </div>
-            <div className="col-md-3">
-                <input value={this.props.reference} onChange={this.props.setReference}></input>                    
-            </div>
-            <div className="col-md-3">
-                <img src={SaveImage} alt="save me" onClick={(i) => this.props.SaveSupplier(i)} />  
-                <img src={CancelImage} alt="cancel editing" onClick={(i) => this.props.Cancel(i)} />                     
-            </div>
-        </div>                     
-    </div>
-           /*  <SupplierDetail 
-                supplier={this.state.supplierData} 
-                Save={(i) => this.SaveSupplier(i)}
-            />     */        
+                            
         );
     }
 }
 
- export default SupplierDetail
+ export default SupplierDetailComponent
