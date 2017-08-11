@@ -3,6 +3,13 @@ import api from "../api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SupplierDetail from "../SupplierDetail";
 
+const PageState = {
+  List: 1,
+  Edit: 2,
+  New: 3,
+  Saved: 4
+};
+
 class SupplierDetailComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +20,6 @@ class SupplierDetailComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log("mounted");
     this.setState({
       supplier: {
         id: this.props.id,
@@ -41,8 +47,7 @@ class SupplierDetailComponent extends React.Component {
 
   CancelEdit(index) {
     // make a copy of supplier
-    console.log("changing name");
-    var supplier = { ...this.state.supplier };
+   /*  var supplier = { ...this.state.supplier };
     // give it the new name
     supplier.name = "";
     supplier.id = 0;
@@ -51,7 +56,9 @@ class SupplierDetailComponent extends React.Component {
     // push the new supplier into the state
     this.setState({
       supplier // we're using es6 so I don't need to do supplier: supplier
-    });
+    }); */
+
+    this.props.setPageMode(PageState.List);
   }
 
   SaveSupplier(i) {
@@ -66,12 +73,7 @@ class SupplierDetailComponent extends React.Component {
           reference: this.state.supplier.reference
         })
         .then(response => {
-          console.log(response);
-          var Saved = { ...this.state.Saved };
-          Saved = true;
-          this.setState({
-            Saved
-          });
+          this.props.setPageMode(PageState.List);
         })
         .catch(function(error) {
           alert("An error occurred while updating the record " + error);
@@ -85,8 +87,8 @@ class SupplierDetailComponent extends React.Component {
           city: this.state.supplier.city,
           reference: this.state.supplier.reference
         })
-        .then(function(response) {
-          console.log(response);
+        .then(response => {
+          this.props.setPageMode(PageState.List);
         })
         .catch(function(error) {
           console.log(error);
@@ -96,7 +98,6 @@ class SupplierDetailComponent extends React.Component {
 
   setName(event) {
     // make a copy of supplier
-    console.log("changing name");
     var supplier = { ...this.state.supplier };
     // give it the new name
     supplier.name = event.target.value;
@@ -107,7 +108,6 @@ class SupplierDetailComponent extends React.Component {
   }
 
   setCity(event) {
-    console.log("changing city");
     // make a copy of supplier
     var supplier = { ...this.state.supplier };
     // give it the new city
@@ -119,14 +119,13 @@ class SupplierDetailComponent extends React.Component {
   }
 
   setReference(event) {
-    console.log("changing reference");
     // make a copy of supplier
     var supplier = { ...this.state.supplier };
     // give it the new reference
     supplier.reference = event.target.value;
     // push the new supplier into the state
     this.setState({
-      supplier //
+      supplier
     });
   }
 
@@ -134,7 +133,6 @@ class SupplierDetailComponent extends React.Component {
     const { name } = this.state.supplier;
     const { city } = this.state.supplier;
     const { reference } = this.state.supplier;
-    const { id } = this.state.supplier;
     return (
       <div>
         <SupplierDetail

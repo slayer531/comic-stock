@@ -30,10 +30,6 @@ class SupplierListContainer extends React.Component {
     this.GetSuppliers();
   }
 
-  /* EditSupplier(index){
-        
-    } */
-
   DeleteSupplier(index) {
     alert("Supplier id about to delete: " + index);
     api({

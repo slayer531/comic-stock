@@ -4,49 +4,77 @@ import "./index.css";
 import SupplierList from "./Components/SupplierListContainer";
 import SupplierDetailComponent from "./Components/SupplierDetailContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import api from "./api";
 import AddSupplierImage from "./images/add.png";
+
+const PageState = {
+  List: 1,
+  Edit: 2,
+  New: 3,
+  Saved: 4
+};
 
 class ComicStrip extends React.Component {
   constructor() {
     super();
     this.initialiseState();
-    this.setEditMode = this.setEditMode.bind(this);
+    this.setPageMode = this.setPageMode.bind(this);
   }
 
   initialiseState() {
     this.state = {
       supplier: { id: 0, name: "", city: "", reference: "" },
-      Edit: false,
-      Saved: false,
-      AddNew: false
+      PageState: PageState.List
     };
   }
 
   EditSupplier(supplier) {
     this.setState({
       supplier: supplier,
-      Edit: true,
-      Saved: false,
-      AddNew: false
+      PageState: PageState.Edit
     });
   }
 
-  setEditMode(event) {
-    console.log(event);
-    /*  // make a copy of supplier
-        console.log('changing name');
-        var supplier = { ...this.state.supplier }
-        // give it the new name
-        supplier.name = event.target.value
-        // push the new supplier into the state
-        this.setState({
-            supplier// we're using es6 so I don't need to do supplier: supplier
-        }) */
+  setPageMode(pageState) {
+    this.setState({ PageState: pageState });
   }
 
   AddNew() {
-    console.log("Add new item");
+    this.setState({
+      PageState: PageState.New
+    });
+  }
+
+  State() {
+    switch (this.state.PageState) {
+      case PageState.List:
+        return <SupplierList EditSupplier={i => this.EditSupplier(i)} />;
+      case PageState.New:
+        return (
+          <SupplierDetailComponent
+            id={0}
+            name={""}
+            city={""}
+            reference={""}
+            SaveSupplier={i => this.SaveSupplier(i)}
+            setPageMode={this.setPageMode}
+          />
+        );
+      case PageState.Edit:
+        return (
+          <SupplierDetailComponent
+            id={this.state.supplier.id}
+            name={this.state.supplier.name}
+            city={this.state.supplier.city}
+            reference={this.state.supplier.reference}
+            SaveSupplier={i => this.SaveSupplier(i)}
+            setPageMode={this.setPageMode}
+          />
+        );
+      case PageState.Saved:
+        return <SupplierList EditSupplier={i => this.EditSupplier(i)} />;
+      default:
+        alert('Invalid Page State encountered')
+    }
   }
 
   render() {
@@ -62,15 +90,7 @@ class ComicStrip extends React.Component {
             onClick={i => this.AddNew(i)}
           />
         </div>
-        <SupplierDetailComponent
-          id={this.state.supplier.id}
-          name={this.state.supplier.name}
-          city={this.state.supplier.city}
-          reference={this.state.supplier.reference}
-          SaveSupplier={i => this.SaveSupplier(i)}
-          setEditMode={this.setEditMode}
-        />
-        <SupplierList EditSupplier={i => this.EditSupplier(i)} />
+        {this.State()}
       </div>
     );
   }
