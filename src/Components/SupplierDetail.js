@@ -6,17 +6,34 @@ import SupplierDetail from '../SupplierDetail'
 class SupplierDetailComponent extends React.Component{
     constructor(props) {
         super(props);
-        this.initialiseState();   
+        this.initialiseState();
         this.setName = this.setName.bind(this);
         this.setCity = this.setCity.bind(this);
-        this.setReference = this.setReference.bind(this);     
+        this.setReference = this.setReference.bind(this);
+    }
+
+    componentDidMount() {
+        console.log('mounted')
+        this.setState({supplier: {
+            name: this.props.name,
+            city: this.props.city,
+            reference: this.props.reference
+        }})
+    }
+
+    componentWillReceiveProps (nextProps) {
+        this.setState({supplier: {
+            name: nextProps.name,
+            city: nextProps.city,
+            reference: nextProps.reference
+        }})
     }
 
     initialiseState(){
         this.state = {supplier:{"id":0, "name":"", "city":"", "reference":"" }}
     }
 
-    CancelEdit(index){   
+    CancelEdit(index){
         var Edit = {...this.state.Edit}
         Edit = false;
         this.setState({
@@ -24,11 +41,11 @@ class SupplierDetailComponent extends React.Component{
         });
     }
 
-    SaveSupplier(index){        
+    SaveSupplier(index) {
          if(this.state.supplier.id>0){
             console.log('finding the record: ' + this.state.supplier.id)
-            api.put('/Suppliers/' + this.state.supplier.id, {   
-                id: this.state.supplier.id,             
+            api.put('/Suppliers/' + this.state.supplier.id, {
+                id: this.state.supplier.id,
                 name: this.state.supplier.name,
                 city: this.state.supplier.city,
                 reference: this.state.supplier.reference
@@ -44,23 +61,23 @@ class SupplierDetailComponent extends React.Component{
             .catch(function (error) {
                 alert('An error occurred while updating the record ' + error)
                 console.log(error);
-            }); 
+            });
         }
         else{
             console.log('new: ' + this.state.supplier.id)
-             api.post('/Suppliers', {          
+             api.post('/Suppliers', {
                   name: this.state.supplier.name,
                   city: this.state.supplier.city,
                   reference: this.state.supplier.reference
             })
             .then(function (response) {
-                
-                console.log(response);                
+
+                console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
-            }); 
-        }   
+            });
+        }
     }
 
     setName (event) {
@@ -94,25 +111,26 @@ class SupplierDetailComponent extends React.Component{
         // push the new supplier into the state
         this.setState({
             supplier
-        }) 
+        })
     }
 
     render() {
+        const { name } = this.state.supplier
         return(
             <div>
-                 <SupplierDetail 
+                 <SupplierDetail
                     id={this.props.id}
-                    name={this.props.name}
+                    name={name}
                     city={this.props.city}
                     reference={this.props.reference}
                     SaveSupplier={(i) => this.SaveSupplier(i)}
                     Cancel={(i) => this.Cancel(i)}
-                    setName={this.setName} 
+                    setName={this.setName}
                     setCity={this.setCity}
                     setReference={this.setReference}
-                />    
+                />
             </div>
-                            
+
         );
     }
 }
