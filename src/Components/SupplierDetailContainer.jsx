@@ -15,6 +15,7 @@ class SupplierDetailComponent extends React.Component{
     componentDidMount() {
         console.log('mounted')
         this.setState({supplier: {
+            id:  this.props.id,
             name: this.props.name,
             city: this.props.city,
             reference: this.props.reference
@@ -23,6 +24,7 @@ class SupplierDetailComponent extends React.Component{
 
     componentWillReceiveProps (nextProps) {
         this.setState({supplier: {
+            id: nextProps.id,
             name: nextProps.name,
             city: nextProps.city,
             reference: nextProps.reference
@@ -41,8 +43,9 @@ class SupplierDetailComponent extends React.Component{
         });
     }
 
-    SaveSupplier() {
-         if(this.state.supplier.id>0){
+    SaveSupplier(i) {
+        console.log(this.state.supplier);
+          if(this.state.supplier.id>0){
             console.log('finding the record: ' + this.state.supplier.id)
             api.put('/Suppliers/' + this.state.supplier.id, {
                 id: this.state.supplier.id,
@@ -77,7 +80,7 @@ class SupplierDetailComponent extends React.Component{
             .catch(function (error) {
                 console.log(error);
             });
-        }
+        } 
     }
 
     setName (event) {
@@ -128,7 +131,7 @@ class SupplierDetailComponent extends React.Component{
                     name={name}
                     city={city}
                     reference={reference}
-                    SaveSupplier={this.SaveSupplier}
+                    SaveSupplier={(e) => this.SaveSupplier(e)}
                     Cancel={(i) => this.Cancel(i)}
                     setName={this.setName}
                     setCity={this.setCity}

@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import SaveImage from './images/save-resume.png';
 import CancelImage from './images/delete-x-square-button.png';
+/* import * as bootstrap from 'react-bootstrap'; */
 
 function SupplierDetail(props) {
   return( 
