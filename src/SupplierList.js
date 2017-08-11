@@ -1,8 +1,9 @@
 import React from 'react';
 import DeleteImage from './images/delete-x-square-button.png';
 
-const SupplierList = props =>
-  <div>
+function SupplierList(props) {
+    return(
+        <div>
     <div className="row">
       <div className="col-md-1">Edit</div>
       <div className="col-md-4">Name</div>
@@ -35,6 +36,8 @@ const SupplierList = props =>
         </div>
       )}
     </div>
-  </div>;
+  </div>
+    );
+}
 
 export default SupplierList;

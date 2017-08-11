@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SupplierList from './Components/SupplierList';
-import SupplierDetailComponent from './Components/SupplierDetail';
+import SupplierList from './Components/SupplierListContainer';
+import SupplierDetailComponent from './Components/SupplierDetailContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from './api';
 

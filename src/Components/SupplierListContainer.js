@@ -63,7 +63,6 @@ class SupplierListContainer extends React.Component{
                 suppliers={this.state.supplierData} 
                 Delete={(i) => this.DeleteSupplier(i)}
                 Edit={(i) => this.props.EditSupplier(i)}
-                /* Edit={(i) => this.EditSupplier(i)} */
             />            
         );
     }

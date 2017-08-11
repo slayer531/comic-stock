@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import SaveImage from './images/save-resume.png';
 import CancelImage from './images/delete-x-square-button.png';
 
-const SupplierDetail = props =>
-  <div>
+function SupplierDetail(props) {
+  return( 
+    <div>
     <div className="row">
       <div className="col-md-3">Name</div>
       <div className="col-md-3">City</div>
@@ -17,10 +18,10 @@ const SupplierDetail = props =>
         <input value={props.name} onChange={props.setName} />
       </div>
       <div className="col-md-3">
-        <input value={props.city} onChange={() => props.setCity()} />
+        <input value={props.city} onChange={props.setCity} />
       </div>
       <div className="col-md-3">
-        <input value={props.reference} onChange={() => props.setReference()} />
+        <input value={props.reference} onChange={props.setReference} />
       </div>
       <div className="col-md-3">
         <img
@@ -35,6 +36,7 @@ const SupplierDetail = props =>
         />
       </div>
     </div>
-  </div>;
+  </div>);
+}
 
 export default SupplierDetail;

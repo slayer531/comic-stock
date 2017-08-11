@@ -30,7 +30,7 @@ class SupplierDetailComponent extends React.Component{
     }
 
     initialiseState(){
-        this.state = {supplier:{"id":0, "name":"", "city":"", "reference":"" }}
+        this.state = {supplier:{id:0, name:"", city:"", reference:"" }}
     }
 
     CancelEdit(index){
@@ -41,7 +41,7 @@ class SupplierDetailComponent extends React.Component{
         });
     }
 
-    SaveSupplier(index) {
+    SaveSupplier() {
          if(this.state.supplier.id>0){
             console.log('finding the record: ' + this.state.supplier.id)
             api.put('/Suppliers/' + this.state.supplier.id, {
@@ -82,9 +82,9 @@ class SupplierDetailComponent extends React.Component{
 
     setName (event) {
         // make a copy of supplier
+        console.log('changing name');
         var supplier = { ...this.state.supplier }
         // give it the new name
-        console.log(event.target.value);
         supplier.name = event.target.value
         // push the new supplier into the state
         this.setState({
@@ -93,6 +93,7 @@ class SupplierDetailComponent extends React.Component{
     }
 
     setCity (event) {
+        console.log('changing city');
         // make a copy of supplier
         var supplier = { ...this.state.supplier }
         // give it the new city
@@ -104,26 +105,30 @@ class SupplierDetailComponent extends React.Component{
     }
 
     setReference(event){
+        console.log('changing reference');
        // make a copy of supplier
         var supplier = { ...this.state.supplier }
         // give it the new reference
         supplier.reference = event.target.value
         // push the new supplier into the state
         this.setState({
-            supplier
+            supplier//
         })
     }
 
     render() {
         const { name } = this.state.supplier
+        const { city } = this.state.supplier
+        const { reference } = this.state.supplier
+        const { id } = this.state.supplier
         return(
             <div>
                  <SupplierDetail
                     id={this.props.id}
                     name={name}
-                    city={this.props.city}
-                    reference={this.props.reference}
-                    SaveSupplier={(i) => this.SaveSupplier(i)}
+                    city={city}
+                    reference={reference}
+                    SaveSupplier={this.SaveSupplier}
                     Cancel={(i) => this.Cancel(i)}
                     setName={this.setName}
                     setCity={this.setCity}
