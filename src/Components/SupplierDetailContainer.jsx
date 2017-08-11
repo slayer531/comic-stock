@@ -36,11 +36,18 @@ class SupplierDetailComponent extends React.Component{
     }
 
     CancelEdit(index){
-        var Edit = {...this.state.Edit}
-        Edit = false;
+         // make a copy of supplier
+        console.log('changing name');
+        var supplier = { ...this.state.supplier }
+        // give it the new name
+        supplier.name = ''
+        supplier.id = 0
+        supplier.city=''
+        supplier.reference=''
+        // push the new supplier into the state
         this.setState({
-            Edit
-        });
+            supplier// we're using es6 so I don't need to do supplier: supplier
+        })
     }
 
     SaveSupplier(i) {
@@ -132,7 +139,7 @@ class SupplierDetailComponent extends React.Component{
                     city={city}
                     reference={reference}
                     SaveSupplier={(e) => this.SaveSupplier(e)}
-                    Cancel={(i) => this.Cancel(i)}
+                    Cancel={(i) => this.CancelEdit(i)}
                     setName={this.setName}
                     setCity={this.setCity}
                     setReference={this.setReference}
