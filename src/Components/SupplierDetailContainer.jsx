@@ -46,17 +46,6 @@ class SupplierDetailComponent extends React.Component {
   }
 
   CancelEdit(index) {
-    // make a copy of supplier
-   /*  var supplier = { ...this.state.supplier };
-    // give it the new name
-    supplier.name = "";
-    supplier.id = 0;
-    supplier.city = "";
-    supplier.reference = "";
-    // push the new supplier into the state
-    this.setState({
-      supplier // we're using es6 so I don't need to do supplier: supplier
-    }); */
 
     this.props.setPageMode(PageState.List);
   }
@@ -130,16 +119,10 @@ class SupplierDetailComponent extends React.Component {
   }
 
   render() {
-    const { name } = this.state.supplier;
-    const { city } = this.state.supplier;
-    const { reference } = this.state.supplier;
     return (
       <div>
         <SupplierDetail
-          id={this.props.id}
-          name={name}
-          city={city}
-          reference={reference}
+          {...this.state.supplier}
           SaveSupplier={e => this.SaveSupplier(e)}
           Cancel={i => this.CancelEdit(i)}
           setName={this.setName}

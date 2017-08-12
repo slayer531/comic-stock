@@ -30,7 +30,7 @@ function SupplierList(props) {
               <img
                 src={DeleteImage}
                 alt="delete me"
-                onClick={() => props.Delete(supplier.id)}
+                onClick={() => props.Delete(supplier)}
               />
             </div>
           </div>
