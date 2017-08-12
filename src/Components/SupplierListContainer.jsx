@@ -30,11 +30,11 @@ class SupplierListContainer extends React.Component {
     this.GetSuppliers();
   }
 
-  DeleteSupplier(index) {
-    alert("Supplier id about to delete: " + index);
+  DeleteSupplier(supplier) {    
+    //alert("Supplier id about to delete: " + supplier.id);
     api({
       method: "delete",
-      url: "/Suppliers/" + index
+      url: "/Suppliers/" + supplier.id
     })
       .then(response => {
         console.log(response);
@@ -51,7 +51,7 @@ class SupplierListContainer extends React.Component {
       })
       .catch(function(error) {
         console.log(error);
-        console.log("failed to delete " + index);
+        console.log("failed to delete " + supplier.id);
       });
   }
 
