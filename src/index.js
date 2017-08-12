@@ -35,13 +35,13 @@ class ComicStrip extends React.Component {
   }
 
   setPageMode(pageState) {
-    this.setState({ PageState: pageState });
+    this.setState({
+      PageState: pageState
+    });
   }
 
   AddNew() {
-    this.setState({
-      PageState: PageState.New
-    });
+    this.setPageMode(PageState.New);
   }
 
   State() {
@@ -73,7 +73,7 @@ class ComicStrip extends React.Component {
       case PageState.Saved:
         return <SupplierList EditSupplier={i => this.EditSupplier(i)} />;
       default:
-        alert('Invalid Page State encountered')
+        alert("Invalid Page State encountered");
     }
   }
 
