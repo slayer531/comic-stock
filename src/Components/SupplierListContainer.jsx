@@ -49,9 +49,10 @@ class SupplierListContainer extends React.Component {
     if (searchString != null) {
       console.log("trying to apply: " + searchString);
       supplierDataFiltered = this.state.supplierData.filter(function(item) {
-        return (item.name.indexOf(searchString) !== -1 ||
-                item.city.indexOf(searchString) !== -1 ||
-                item.reference.indexOf(searchString) !== -1)
+        searchString = searchString.toLowerCase();
+        return (item.name.toLowerCase().indexOf(searchString) !== -1 ||
+                item.city.toLowerCase().indexOf(searchString) !== -1 ||
+                item.reference.toLowerCase().indexOf(searchString) !== -1)
       });
 
       this.setState({
