@@ -2,6 +2,7 @@ import React from "react";
 import api from "../api";
 import "bootstrap/dist/css/bootstrap.css";
 import SupplierList from "../SupplierList";
+import confirm from "../confirm.js";
 
 class SupplierListContainer extends React.Component {
   constructor(props) {
@@ -30,7 +31,19 @@ class SupplierListContainer extends React.Component {
     this.GetSuppliers();
   }
 
-  DeleteSupplier(supplier) {    
+  handleOnClickDelete(supplier) {
+    confirm("Are you sure?").then(
+      () => {
+        this.DeleteSupplier(supplier);
+        console.log("proceed!");
+      },
+      () => {
+        console.log("cancel!");
+      }
+    );
+  }
+
+  DeleteSupplier(supplier) {
     //alert("Supplier id about to delete: " + supplier.id);
     api({
       method: "delete",
@@ -59,7 +72,7 @@ class SupplierListContainer extends React.Component {
     return (
       <SupplierList
         suppliers={this.state.supplierData}
-        Delete={i => this.DeleteSupplier(i)}
+        Delete={i => this.handleOnClickDelete(i)}
         Edit={i => this.props.EditSupplier(i)}
       />
     );
