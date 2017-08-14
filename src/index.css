@@ -12,7 +12,7 @@ body {
   background-color: #ffffff;
 }
 
-.erdiv:nth-child(even) {
+.altrow:nth-child(even) {
     background: lightgrey;
 }
 
