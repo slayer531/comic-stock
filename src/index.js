@@ -79,7 +79,7 @@ class ComicStrip extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="banner">
           <h1>Need to put a menu in here</h1>
         </div>

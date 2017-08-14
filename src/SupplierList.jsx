@@ -3,7 +3,7 @@ import DeleteImage from "./images/delete-x-square-button.png";
 
 function SupplierList(props) {
   return (
-    <div>
+    <div className="container border">
       <div className="row">
         <div className="col-md-1">Edit</div>
         <div className="col-md-4">Name</div>
