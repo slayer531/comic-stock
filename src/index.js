@@ -45,7 +45,7 @@ class ComicStrip extends React.Component {
   }
 
   AddNewVisibility() {
-    if (this.state.PageState == PageState.List) {
+    if (this.state.PageState === PageState.List) {
       return (
         <div>
           <img
