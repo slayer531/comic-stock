@@ -8,10 +8,11 @@ class SupplierListContainer extends React.Component {
   constructor(props) {
     super(props);
     this.initialiseState();
+    this.FilterSuppliers = this.FilterSuppliers.bind(this);
   }
 
   initialiseState() {
-    this.state = { supplierData: [] };
+    this.state = { supplierData: [], supplierDataFiltered: [] };
   }
 
   GetSuppliers() {
@@ -19,7 +20,8 @@ class SupplierListContainer extends React.Component {
       .get("/Suppliers")
       .then(response => {
         this.setState({
-          supplierData: response.data
+          supplierData: response.data,
+          supplierDataFiltered : response.data
         });
       })
       .catch(e => {
@@ -35,12 +37,27 @@ class SupplierListContainer extends React.Component {
     confirm("Are you sure?").then(
       () => {
         this.DeleteSupplier(supplier);
-        console.log("proceed!");
       },
-      () => {
-        console.log("cancel!");
-      }
+      () => {}
     );
+  }
+
+  FilterSuppliers(event) {
+    var searchString = event.target.value;
+    var supplierDataFiltered=[];
+
+    if (searchString != null) {
+      console.log("trying to apply: " + searchString);
+      supplierDataFiltered = this.state.supplierData.filter(function(item) {
+        return (item.name.indexOf(searchString) !== -1 ||
+                item.city.indexOf(searchString) !== -1 ||
+                item.reference.indexOf(searchString) !== -1)
+      });
+
+      this.setState({
+        supplierDataFiltered: supplierDataFiltered
+      });
+    }
   }
 
   DeleteSupplier(supplier) {
@@ -71,9 +88,10 @@ class SupplierListContainer extends React.Component {
   render() {
     return (
       <SupplierList
-        suppliers={this.state.supplierData}
+        suppliers={this.state.supplierDataFiltered}
         Delete={i => this.handleOnClickDelete(i)}
         Edit={i => this.props.EditSupplier(i)}
+        FilterSuppliers={this.FilterSuppliers}
       />
     );
   }
