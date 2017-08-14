@@ -2,11 +2,36 @@ import React from "react";
 import DeleteImage from "./images/delete-x-square-button.png";
 
 function SupplierList(props) {
+  const currentPage = props.CurrentPage;
+  const suppliersPerPage = props.SuppliersToShow;
+  const suppliers = props.suppliers;
+
+  // Logic for displaying current todos
+  const indexOfLastSupplier = currentPage * suppliersPerPage;
+  const indexOfFirstSupplier = indexOfLastSupplier - suppliersPerPage;
+  const currentSuppliers = suppliers.slice(indexOfFirstSupplier, indexOfLastSupplier);
+
+  // Logic for displaying page numbers
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(suppliers.length / suppliersPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const renderPageNumbers = pageNumbers.map(number => {
+    return (
+      <li key={number} id={number} onClick={() => props.handlePageClick(number)}>
+        {number}
+      </li>
+    );
+  });
+
   return (
     <div>
       <div className="row">
         <div className="col-md-4 col-md-offset-8">
-          <label htmlFor="Search" value="">Search: </label>
+          <label htmlFor="Search" value="">
+            Search:
+          </label>
           <input onChange={props.FilterSuppliers} />
         </div>
       </div>
@@ -19,7 +44,7 @@ function SupplierList(props) {
           <div className="col-md-1">Delete</div>
         </div>
         <div className=".row">
-          {props.suppliers.map((supplier, index) =>
+          {currentSuppliers.map((supplier, index) =>
             <div key={index} className="row altrow">
               <div className="col-md-1">
                 <button onClick={() => props.Edit(supplier)}>Edit</button>
@@ -44,6 +69,13 @@ function SupplierList(props) {
           )}
         </div>
       </div>
+      <div>
+        <div>
+        </div>
+      </div>
+      <ul id="page-numbers">
+            {renderPageNumbers}
+          </ul>
     </div>
   );
 }

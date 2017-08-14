@@ -9,10 +9,16 @@ class SupplierListContainer extends React.Component {
     super(props);
     this.initialiseState();
     this.FilterSuppliers = this.FilterSuppliers.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   initialiseState() {
-    this.state = { supplierData: [], supplierDataFiltered: [] };
+    this.state = {
+      supplierData: [],
+      supplierDataFiltered: [],
+      currentPage:1,
+      SuppliersToShow:10
+    };
   }
 
   GetSuppliers() {
@@ -21,7 +27,7 @@ class SupplierListContainer extends React.Component {
       .then(response => {
         this.setState({
           supplierData: response.data,
-          supplierDataFiltered : response.data
+          supplierDataFiltered: response.data
         });
       })
       .catch(e => {
@@ -42,17 +48,24 @@ class SupplierListContainer extends React.Component {
     );
   }
 
+  handlePageClick(event){
+        this.setState({
+          currentPage:event
+      })  
+  }
+
   FilterSuppliers(event) {
     var searchString = event.target.value;
-    var supplierDataFiltered=[];
+    var supplierDataFiltered = [];
 
     if (searchString != null) {
-      console.log("trying to apply: " + searchString);
       supplierDataFiltered = this.state.supplierData.filter(function(item) {
         searchString = searchString.toLowerCase();
-        return (item.name.toLowerCase().indexOf(searchString) !== -1 ||
-                item.city.toLowerCase().indexOf(searchString) !== -1 ||
-                item.reference.toLowerCase().indexOf(searchString) !== -1)
+        return (
+          item.name.toLowerCase().indexOf(searchString) !== -1 ||
+          item.city.toLowerCase().indexOf(searchString) !== -1 ||
+          item.reference.toLowerCase().indexOf(searchString) !== -1
+        );
       });
 
       this.setState({
@@ -93,6 +106,9 @@ class SupplierListContainer extends React.Component {
         Delete={i => this.handleOnClickDelete(i)}
         Edit={i => this.props.EditSupplier(i)}
         FilterSuppliers={this.FilterSuppliers}
+        CurrentPage={this.state.currentPage}
+        SuppliersToShow={10}//{this.state.SuppliersToShow}
+        handlePageClick={i => this.handlePageClick(i)}
       />
     );
   }
