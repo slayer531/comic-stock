@@ -44,7 +44,20 @@ class ComicStrip extends React.Component {
     this.setPageMode(PageState.New);
   }
 
-  State() {
+  AddNewVisibility() {
+    if (this.state.PageState == PageState.List) {
+      return (
+        <div>
+          <img
+            src={AddSupplierImage}
+            alt="Add new supplier"
+            onClick={i => this.AddNew(i)}
+          />
+        </div>
+      );
+    }
+  }
+  ControlsToShow() {
     switch (this.state.PageState) {
       case PageState.List:
         return <SupplierList EditSupplier={i => this.EditSupplier(i)} />;
@@ -83,14 +96,8 @@ class ComicStrip extends React.Component {
         <div className="banner">
           <h1>Need to put a menu in here</h1>
         </div>
-        <div>
-          <img
-            src={AddSupplierImage}
-            alt="Add new supplier"
-            onClick={i => this.AddNew(i)}
-          />
-        </div>
-        {this.State()}
+        {this.AddNewVisibility()}
+        {this.ControlsToShow()}
       </div>
     );
   }

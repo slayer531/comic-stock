@@ -6,7 +6,7 @@ import CancelImage from "./images/cancel.jpg";
 
 function SupplierDetail(props) {
   return (
-    <div>
+    <div className="container border">
       <div className="row">
         <div className="col-md-3">Name</div>
         <div className="col-md-3">City</div>

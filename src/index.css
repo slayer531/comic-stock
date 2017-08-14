@@ -17,7 +17,7 @@ body {
 }
 
 .hiddenControl{
-  width: 0px;
+  display: none;
 }
 
 .border{

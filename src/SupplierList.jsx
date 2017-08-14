@@ -4,7 +4,7 @@ import DeleteImage from "./images/delete-x-square-button.png";
 function SupplierList(props) {
   return (
     <div className="container border">
-      <div className="row">
+      <div className="row border">
         <div className="col-md-1">Edit</div>
         <div className="col-md-4">Name</div>
         <div className="col-md-3">City</div>
@@ -13,7 +13,7 @@ function SupplierList(props) {
       </div>
       <div className=".row">
         {props.suppliers.map((supplier, index) =>
-          <div key={index} className="row erdiv">
+          <div key={index} className="row altrow">
             <div className="col-md-1">
               <button onClick={() => props.Edit(supplier)}>Edit</button>
             </div>
