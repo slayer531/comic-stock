@@ -5,13 +5,13 @@ function SupplierList(props) {
   const currentPage = props.CurrentPage;
   const suppliersPerPage = props.SuppliersToShow;
   const suppliers = props.suppliers;
-
-  // Logic for displaying current todos
   const indexOfLastSupplier = currentPage * suppliersPerPage;
   const indexOfFirstSupplier = indexOfLastSupplier - suppliersPerPage;
-  const currentSuppliers = suppliers.slice(indexOfFirstSupplier, indexOfLastSupplier);
+  const currentSuppliers = suppliers.slice(
+    indexOfFirstSupplier,
+    indexOfLastSupplier
+  );
 
-  // Logic for displaying page numbers
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(suppliers.length / suppliersPerPage); i++) {
     pageNumbers.push(i);
@@ -19,7 +19,11 @@ function SupplierList(props) {
 
   const renderPageNumbers = pageNumbers.map(number => {
     return (
-      <li key={number} id={number} onClick={() => props.handlePageClick(number)}>
+      <li
+        key={number}
+        id={number}
+        onClick={() => props.handlePageClick(number)}
+      >
         {number}
       </li>
     );
@@ -69,13 +73,9 @@ function SupplierList(props) {
           )}
         </div>
       </div>
-      <div>
-        <div>
-        </div>
-      </div>
       <ul id="page-numbers">
-            {renderPageNumbers}
-          </ul>
+        {renderPageNumbers}
+      </ul>
     </div>
   );
 }

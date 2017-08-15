@@ -10,7 +10,7 @@ const PageState = {
   Saved: 4
 };
 
-class SupplierDetailComponent extends React.Component {
+class SupplierDetailContainer extends React.Component {
   constructor(props) {
     super(props);
     this.initialiseState();
@@ -51,9 +51,7 @@ class SupplierDetailComponent extends React.Component {
   }
 
   SaveSupplier(i) {
-    console.log(this.state.supplier);
     if (this.state.supplier.id > 0) {
-      console.log("finding the record: " + this.state.supplier.id);
       api
         .put("/Suppliers/" + this.state.supplier.id, {
           id: this.state.supplier.id,
@@ -66,10 +64,9 @@ class SupplierDetailComponent extends React.Component {
         })
         .catch(function(error) {
           alert("An error occurred while updating the record " + error);
-          console.log(error);
+          console.error(error);
         });
     } else {
-      console.log("new: " + this.state.supplier.id);
       api
         .post("/Suppliers", {
           name: this.state.supplier.name,
@@ -80,7 +77,7 @@ class SupplierDetailComponent extends React.Component {
           this.props.setPageMode(PageState.List);
         })
         .catch(function(error) {
-          console.log(error);
+          console.error(error);
         });
     }
   }
@@ -134,4 +131,4 @@ class SupplierDetailComponent extends React.Component {
   }
 }
 
-export default SupplierDetailComponent;
+export default SupplierDetailContainer;

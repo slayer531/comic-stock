@@ -17,7 +17,8 @@ class SupplierListContainer extends React.Component {
       supplierData: [],
       supplierDataFiltered: [],
       currentPage:1,
-      SuppliersToShow:10
+      SuppliersToShow:10,
+      SearchString:''
     };
   }
 
@@ -58,6 +59,11 @@ class SupplierListContainer extends React.Component {
     var searchString = event.target.value;
     var supplierDataFiltered = [];
 
+    //SearchString
+    this.setState({
+        SearchString: searchString
+      });
+
     if (searchString != null) {
       supplierDataFiltered = this.state.supplierData.filter(function(item) {
         searchString = searchString.toLowerCase();
@@ -75,18 +81,17 @@ class SupplierListContainer extends React.Component {
   }
 
   DeleteSupplier(supplier) {
-    //alert("Supplier id about to delete: " + supplier.id);
     api({
       method: "delete",
       url: "/Suppliers/" + supplier.id
     })
       .then(response => {
-        console.log(response);
         api
           .get("/Suppliers")
           .then(response => {
             this.setState({
-              supplierData: response.data
+              supplierData: response.data,
+              supplierDataFiltered: response.data            
             });
           })
           .catch(e => {
@@ -95,7 +100,7 @@ class SupplierListContainer extends React.Component {
       })
       .catch(function(error) {
         console.log(error);
-        console.log("failed to delete " + supplier.id);
+        console.error("failed to delete " + supplier.id);
       });
   }
 
@@ -107,7 +112,7 @@ class SupplierListContainer extends React.Component {
         Edit={i => this.props.EditSupplier(i)}
         FilterSuppliers={this.FilterSuppliers}
         CurrentPage={this.state.currentPage}
-        SuppliersToShow={10}//{this.state.SuppliersToShow}
+        SuppliersToShow={this.state.SuppliersToShow}
         handlePageClick={i => this.handlePageClick(i)}
       />
     );
