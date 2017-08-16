@@ -8,7 +8,36 @@ const IssueCondition = {
   Poor: 4
 };
 
-export function IssuesOrderDetails() {
+export function IssueConditionDisplayValue(issueCondition) {
+  switch (issueCondition) {
+    case IssueCondition.VeryFine:
+      return "Very Fine";
+      break;
+
+    case IssueCondition.Fine:
+      return "Fine";
+      break;
+
+    case IssueCondition.Good:
+      return "Good";
+      break;
+
+    case IssueCondition.Poor:
+      return "Poor";
+      break;
+  }
+}
+export function IssuesOrderDetails() {}
+
+function IssueOrder(props) {
+  const SupplierListItems = props.suppliers.map(supplier => {
+    return (
+      <option value={supplier.id}>
+        {supplier.name}
+      </option>
+    );
+  });
+
   let issueOrderDetails = {
     IssueId: 0,
     SupplierId: 0,
@@ -19,14 +48,25 @@ export function IssuesOrderDetails() {
       { Condition: IssueCondition.Poor, Amount: 0 }
     ]
   };
-}
 
-function IssueOrder(props) {
-  const SupplierListItems = props.suppliers.map(supplier => {
+  const IssueConditions = issueOrderDetails.IssueOrder.map(issueOrderDetail => {
+    console.log(issueOrderDetail);
     return (
-      <option value={supplier.id}>
-        {supplier.name}
-      </option>
+      <div key={issueOrderDetail.Condition} className="row">
+        <div className="col-md-2">
+          <label>
+            {"Condition"}
+          </label>
+        </div>
+        <div className="col-md-2">
+          <label>
+            {IssueConditionDisplayValue(issueOrderDetail.Condition)}
+          </label>
+        </div>
+        <div className="col-md-2">
+          <input type="number" value={issueOrderDetail.Amount} />
+        </div>
+      </div>
     );
   });
 
@@ -41,6 +81,10 @@ function IssueOrder(props) {
             {SupplierListItems}
           </select>
         </div>
+      </div>
+      <div className="row">
+        {IssueConditions}
+        <div className="col-md-12" />
       </div>
       {/* <div className="row">
         <div className="col-md-4">
