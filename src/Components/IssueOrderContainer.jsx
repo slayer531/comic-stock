@@ -20,6 +20,10 @@ class IssueOrderContainer extends React.Component {
     this.GetSuppliers();
   }
 
+  CreateNewIssueOrder() {
+    console.log("submitting new issue order to api");
+  }
+
   GetSuppliers() {
     api
       .get("/Suppliers")
@@ -34,13 +38,18 @@ class IssueOrderContainer extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div>
-          <IssueOrder suppliers={this.state.supplierData} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4">
+            <IssueOrder suppliers={this.state.supplierData} />
+          </div>          
         </div>
-        <div>
-          <button>
-            {"Order"}
+        <div className="row">
+          <button onClick={() => this.CreateNewIssueOrder()}>
+            {"Submit Order"}
+          </button>
+           <button onClick={this.props.CancelNewOrder}>
+            {"Cancel"}
           </button>
         </div>
       </div>
