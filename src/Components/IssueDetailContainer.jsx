@@ -42,9 +42,7 @@ class IssueDetailContainer extends React.Component {
           </button>
         </div>
         <Modal show={this.state.showModal}>
-          <div>
-            <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} />
-          </div>
+          <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} />
         </Modal>  
       </div>
     );

@@ -12,19 +12,20 @@ export function IssueConditionDisplayValue(issueCondition) {
   switch (issueCondition) {
     case IssueCondition.VeryFine:
       return "Very Fine";
-      break;
 
     case IssueCondition.Fine:
       return "Fine";
-      break;
 
     case IssueCondition.Good:
       return "Good";
-      break;
 
     case IssueCondition.Poor:
       return "Poor";
-      break;
+
+    default:
+      return console.error(
+        "Unknown issue condition encountered: " + issueCondition
+      );
   }
 }
 export function IssuesOrderDetails() {}
@@ -38,42 +39,36 @@ function IssueOrder(props) {
     );
   });
 
-  let issueOrderDetails = {
-    IssueId: 0,
-    SupplierId: 0,
-    IssueOrder: [
-      { Condition: IssueCondition.VeryFine, Amount: 0 },
-      { Condition: IssueCondition.Fine, Amount: 0 },
-      { Condition: IssueCondition.Good, Amount: 0 },
-      { Condition: IssueCondition.Poor, Amount: 0 }
-    ]
-  };
-
-  const IssueConditions = issueOrderDetails.IssueOrder.map(issueOrderDetail => {
-    console.log(issueOrderDetail);
-    return (
-      <div key={issueOrderDetail.Condition} className="row">
-        <div className="col-md-2">
-          <label>
-            {"Condition"}
-          </label>
+  const IssueConditions = props.issueOrderDetails.IssueOrder.map(
+    issueOrderDetail => {
+      return (
+        <div key={issueOrderDetail.Condition} className="row">
+          <div className="col-md-2">
+            <label>
+              {"Condition"}
+            </label>
+          </div>
+          <div className="col-md-2">
+            <label>
+              {IssueConditionDisplayValue(issueOrderDetail.Condition)}
+            </label>
+          </div>
+          <div className="col-md-2">
+            <input
+              type="number"
+              value={issueOrderDetail.Amount}
+              onChange={props.onAmountChange}
+            />
+          </div>
         </div>
-        <div className="col-md-2">
-          <label>
-            {IssueConditionDisplayValue(issueOrderDetail.Condition)}
-          </label>
-        </div>
-        <div className="col-md-2">
-          <input type="number" value={issueOrderDetail.Amount} />
-        </div>
-      </div>
-    );
-  });
+      );
+    }
+  );
 
   return (
-    <div className="container border">
+    <div className="container">
       <div className="row">
-        <div className="col-md-2">
+        <div className="col-md-1">
           <label>Supplier</label>
         </div>
         <div className="col-md-2">
@@ -86,23 +81,6 @@ function IssueOrder(props) {
         {IssueConditions}
         <div className="col-md-12" />
       </div>
-      {/* <div className="row">
-        <div className="col-md-4">
-          <label>
-            {props.Issue.description}
-          </label>
-        </div>
-        <div className="col-md-4">
-          <label>
-            {props.Issue.description}
-          </label>
-        </div>
-        <div className="col-md-4">
-          <label>
-            {props.Issue.description}
-          </label>
-        </div> 
-      </div>*/}
     </div>
   );
 }
