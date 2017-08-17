@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import dateFormat from "dateformat";
+import NoImage from "./images/not_available_icon.jpg";
 
 function IssueDetail(props) {
   console.log(props.Issue);
@@ -40,7 +41,7 @@ function IssueDetail(props) {
           </div>
         </div>
         <div className="col-md-2">
-          <img src={(props.Issue.images? props.Issue.images[0].pathIncludingExtension: "")} alt="" />
+          <img src={(props.Issue.images!=null && props.Issue.images.length>0 ? props.Issue.images[0].pathIncludingExtension: NoImage)} alt="Comic" />
         </div>
       </div>
     </div>
