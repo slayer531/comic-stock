@@ -8,7 +8,7 @@ function IssueList(props) {
     <div>
       <div className="container border">
           {issues.map((issue, index) =>
-            <div className="row">
+            <div key={index} className="row">
               <div key={index}>
                 <div className="thumbnail hover">
                   <img
