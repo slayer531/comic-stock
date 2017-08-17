@@ -15,6 +15,9 @@ class IssueOrderContainer extends React.Component {
     super(props);
     this.initialiseState(props);
     this.onAmountChangeHandle = this.onAmountChangeHandle.bind(this);
+    this.onConditionChangeHandle = this.onConditionChangeHandle.bind(this);
+    this.onSupplierChangeHandle = this.onSupplierChangeHandle.bind(this);
+
   }
 
   initialiseState(props) {
@@ -24,12 +27,7 @@ class IssueOrderContainer extends React.Component {
       order: {
         id: 0,
         SupplierId: 0,
-        items: [
-          { id: 0, condition: IssueCondition.VeryFine, quantity: 0 },
-          { id: 0, condition: IssueCondition.Fine, quantity: 0 },
-          { id: 0, condition: IssueCondition.Good, quantity: 0 },
-          { id: 0, condition: IssueCondition.Poor, quantity: 0 }
-        ]
+        items: [{ id: 0, condition: IssueCondition.VeryFine, quantity: 0 }]
       }
     };
   }
@@ -38,8 +36,23 @@ class IssueOrderContainer extends React.Component {
     this.GetSuppliers();
   }
 
-  CreateNewIssueOrder() {
-    console.log("submitting new issue order to api");
+//PUT /api/Orders/{supplierId}/issues/{issueId}/Put
+  SubmitNewIssueOrder() {
+    console.log("trying to add order with supplierId: " + this.state.order.SupplierId + " and issueId: " + this.state.issue.id);
+    console.log(this.state.issue);
+    api.put("/Orders/" + this.state.order.SupplierId + "/issues/" + this.state.issue.id + "/put",{
+          orderDate: new Date(),
+          issue: this.state.issue,
+          items: this.state.order.items,
+          shipmentReference: "I added an order :-)"
+        })
+        .then(response => {
+          console.log("successfully pushed to API");
+        })
+        .catch(function(error) {
+          alert("An error occurred while submitting the order " + error);
+          console.error(error);
+        });
   }
 
   GetSuppliers() {
@@ -55,28 +68,49 @@ class IssueOrderContainer extends React.Component {
       });
   }
 
-  onAmountChangeHandle(event) {
-    console.log("onAmountChangeHandle:" + event.target.value);
+  onSupplierChangeHandle(event) {
+    var order = this.state.order;
+
+    order.SupplierId = event.target.value;
     this.setState({
-      value: event.target.value
+      order: order
+    });
+  }
+
+  onAmountChangeHandle(event) {
+    var order = this.state.order;
+
+    order.items[0].quantity = event.target.value;
+    this.setState({
+      order: order
+    });
+  }
+
+  onConditionChangeHandle(event){
+    var order = this.state.order;
+
+    order.items[0].condition = event.target.value;
+    this.setState({
+      order: order
     });
   }
 
   render() {
-    let order = { ...this.state.order };
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-4">
             <IssueOrder
               suppliers={this.state.supplierData}
-              order={order}
+              order={this.state.order}
               onAmountChange={e => this.onAmountChangeHandle(e)}
+              onConditionChange={e => this.onConditionChangeHandle(e)}
+              onSupplierChange={e => this.onSupplierChangeHandle(e)}
             />
           </div>
         </div>
         <div className="row">
-          <button onClick={() => this.CreateNewIssueOrder()}>
+          <button onClick={() => this.SubmitNewIssueOrder()}>
             {"Submit Order"}
           </button>
           <button onClick={this.props.CancelNewOrder}>

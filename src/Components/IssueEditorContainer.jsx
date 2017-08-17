@@ -21,7 +21,7 @@ class IssueEditorContainer extends React.Component {
       .get("/Issues/" + issueId)
       .then(response => {
         this.setState({
-          issue: response.data
+          issue: response.data          
         });
       })
       .catch(e => {
@@ -29,7 +29,6 @@ class IssueEditorContainer extends React.Component {
       });
   }
   View(e) {
-    console.log('viewing Issue: ' + e);
      this.GetIssue(e);
   }
 

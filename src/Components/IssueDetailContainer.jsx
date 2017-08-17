@@ -18,20 +18,22 @@ class IssueDetailContainer extends React.Component {
 
   OrderIssues(){    
     this.setState({
-      showModal:true,
-      issue: this.state.issue
+      showModal:true/* ,
+      issue: this.state.issue */
     })
 
-    console.log('open order issue UI');
+    /* console.log(this.props.Issue); */
   }
 
   handleCancelNewOrder(){
      this.setState({
-      showModal:false
+      showModal:false      
     })
   }
 
   render() {
+    var issue = {...this.state.issue};
+
     return (
       <div>
         <div>
@@ -43,7 +45,7 @@ class IssueDetailContainer extends React.Component {
           </button>
         </div>
         <Modal show={this.state.showModal}>
-          <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} Issue={this.state.issue} />
+          <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} Issue={this.props.Issue} />
         </Modal>  
       </div>
     );

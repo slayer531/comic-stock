@@ -4,7 +4,6 @@ import dateFormat from "dateformat";
 import NoImage from "./images/not_available_icon.jpg";
 
 function IssueDetail(props) {
-  console.log(props.Issue);
   return (
     <div className="container border">
       <div className="row">

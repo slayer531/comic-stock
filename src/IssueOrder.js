@@ -39,7 +39,7 @@ function IssueOrder(props) {
     );
   });
 
-  const IssueConditions = props.order.items.map(
+  /* const IssueConditions = props.order.items.map(
     item => {
       return (
         <div key={item.condition} className="row">
@@ -63,7 +63,7 @@ function IssueOrder(props) {
         </div>
       );
     }
-  );
+  ); */
 
   return (
     <div className="container">
@@ -72,14 +72,39 @@ function IssueOrder(props) {
           <label>Supplier</label>
         </div>
         <div className="col-md-2">
-          <select name="Suppliers" id="Suppliers">
+          <select onChange={props.onSupplierChange} name="Suppliers" id="Suppliers">
             {SupplierListItems}
           </select>
         </div>
       </div>
       <div className="row">
-        {IssueConditions}
+        {/* {IssueConditions} */}
+        <div className="col-md-2">
+            <label>
+              {"Condition"}
+            </label>
+          </div>
+          <div className="col-md-2">
+            <select onChange={props.onConditionChange} value={props.order.items[0].condition} name="Conditions" id="Conditions">
+            <option value="1">{IssueConditionDisplayValue(1)}</option>
+            <option value="2">{IssueConditionDisplayValue(2)}</option>
+            <option value="3">{IssueConditionDisplayValue(3)}</option>
+            <option value="4">{IssueConditionDisplayValue(4)}</option>
+          </select>
+          </div>
         <div className="col-md-12" />
+      </div>
+      <div className="row">
+        <div className="col-md-1">
+          <label>Amount</label>
+        </div>
+          <div className="col-md-2">
+            <input
+              type="number"
+              value={props.order.quantity}
+              onChange={props.onAmountChange}
+            />
+          </div>
       </div>
     </div>
   );
