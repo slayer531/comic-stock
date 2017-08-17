@@ -23,7 +23,7 @@ class ComicStrip extends React.Component {
         <div className="banner">
           <h1>Need to put a menu in here</h1>
         </div>
-        <SupplierEditorContainer />
+        {/* <SupplierEditorContainer /> */}
         <IssueEditorContainer />
       </div>
     );
