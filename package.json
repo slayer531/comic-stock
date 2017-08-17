@@ -9,7 +9,8 @@
     "axios": "0.16.2",
     "bootstrap": "3.3.7",
     "react-confirm": "^0.1.0",
-    "react-bootstrap": "0.31.2"
+    "react-bootstrap": "0.31.2",
+    "dateformat": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
