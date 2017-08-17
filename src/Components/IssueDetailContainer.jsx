@@ -32,7 +32,6 @@ class IssueDetailContainer extends React.Component {
   }
 
   render() {
-    var issue = {...this.state.issue};
 
     return (
       <div>
