@@ -2,17 +2,21 @@
   "name": "comic-stock",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://slayer531.github.io/comic-stock",
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-scripts": "1.0.10",
     "axios": "0.16.2",
     "bootstrap": "3.3.7",
-    "react-confirm": "^0.1.0",
+    "dateformat": "^2.0.0",
+    "gh-pages": "^1.0.0",
+    "react": "^15.6.1",
     "react-bootstrap": "0.31.2",
-    "dateformat": "^2.0.0"
+    "react-confirm": "^0.1.0",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.10"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
