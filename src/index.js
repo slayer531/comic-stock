@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SupplierEditorContainer from "./Components/SupplierEditorContainer.jsx"
-import IssueEditorContainer from "./Components/IssueEditorContainer.jsx"
+import SupplierEditorContainer from "./Components/SupplierEditorContainer.jsx";
+import IssueEditorContainer from "./Components/IssueEditorContainer.jsx";
+import NavigationBar from "./NavigationBar.jsx";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class ComicStrip extends React.Component {
   constructor() {
@@ -12,22 +14,23 @@ class ComicStrip extends React.Component {
   }
 
   initialiseState() {
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
     return (
       <div className="container">
-        <div className="banner">
-          <h1>Need to put a menu in here</h1>
-        </div>
-        {/* <SupplierEditorContainer /> */}
-        <IssueEditorContainer />
+        <NavigationBar />
+        <Route path="/Suppliers" component={SupplierEditorContainer} />
+        <Route path="/Issues" component={IssueEditorContainer} />
       </div>
     );
   }
 }
 
-ReactDOM.render(<ComicStrip />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <ComicStrip />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
