@@ -39,10 +39,10 @@ function IssueOrder(props) {
     );
   });
 
-  const IssueConditions = props.issueOrderDetails.IssueOrder.map(
-    issueOrderDetail => {
+  const IssueConditions = props.order.items.map(
+    item => {
       return (
-        <div key={issueOrderDetail.Condition} className="row">
+        <div key={item.condition} className="row">
           <div className="col-md-2">
             <label>
               {"Condition"}
@@ -50,13 +50,13 @@ function IssueOrder(props) {
           </div>
           <div className="col-md-2">
             <label>
-              {IssueConditionDisplayValue(issueOrderDetail.Condition)}
+              {IssueConditionDisplayValue(item.condition)}
             </label>
           </div>
           <div className="col-md-2">
             <input
               type="number"
-              value={issueOrderDetail.Amount}
+              value={item.quantity}
               onChange={props.onAmountChange}
             />
           </div>

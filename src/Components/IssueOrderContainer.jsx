@@ -21,14 +21,14 @@ class IssueOrderContainer extends React.Component {
     this.state = {
       issue: props.Issue,
       supplierData: [],
-      issueOrderDetails: {
-        IssueId: 0,
+      order: {
+        id: 0,
         SupplierId: 0,
-        IssueOrder: [
-          { Condition: IssueCondition.VeryFine, Amount: 0 },
-          { Condition: IssueCondition.Fine, Amount: 0 },
-          { Condition: IssueCondition.Good, Amount: 0 },
-          { Condition: IssueCondition.Poor, Amount: 0 }
+        items: [
+          { id: 0, condition: IssueCondition.VeryFine, quantity: 0 },
+          { id: 0, condition: IssueCondition.Fine, quantity: 0 },
+          { id: 0, condition: IssueCondition.Good, quantity: 0 },
+          { id: 0, condition: IssueCondition.Poor, quantity: 0 }
         ]
       }
     };
@@ -57,17 +57,21 @@ class IssueOrderContainer extends React.Component {
 
   onAmountChangeHandle(event) {
     console.log("onAmountChangeHandle:" + event.target.value);
+    this.setState({
+      value: event.target.value
+    });
   }
 
   render() {
+    let order = { ...this.state.order };
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-4">
             <IssueOrder
               suppliers={this.state.supplierData}
-              issueOrderDetails={this.state.issueOrderDetails}
-              onAmountChange={this.onAmountChangeHandle}
+              order={order}
+              onAmountChange={e => this.onAmountChangeHandle(e)}
             />
           </div>
         </div>
