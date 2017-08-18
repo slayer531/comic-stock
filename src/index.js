@@ -28,9 +28,9 @@ class ComicStrip extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <BrowserRouter>
-    <ComicStrip />
+  ReactDOM.render(
+  <BrowserRouter basename="/comic-strip">
+     <Route path="/" component={ComicStrip}/>
   </BrowserRouter>,
   document.getElementById("root")
-);
+);  
