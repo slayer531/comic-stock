@@ -1,5 +1,7 @@
 import React from "react";
 import DeleteImage from "./images/delete-x-square-button.png";
+import Button from "react-bootstrap/lib/Button";
+import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
 
 function SupplierList(props) {
   const currentPage = props.CurrentPage;
@@ -19,13 +21,13 @@ function SupplierList(props) {
 
   const renderPageNumbers = pageNumbers.map(number => {
     return (
-      <li
+      <Button
         key={number}
         id={number}
         onClick={() => props.handlePageClick(number)}
       >
         {number}
-      </li>
+      </Button>
     );
   });
 
@@ -51,7 +53,13 @@ function SupplierList(props) {
           {currentSuppliers.map((supplier, index) =>
             <div key={index} className="row altrow">
               <div className="col-md-1">
-                <button onClick={() => props.Edit(supplier)}>Edit</button>
+                <Button
+                  bsStyle="info"
+                  bsSize="small"
+                  onClick={() => props.Edit(supplier)}
+                >
+                  EDIT
+                </Button>
               </div>
               <div className="col-md-4">
                 {supplier.name}
@@ -63,18 +71,23 @@ function SupplierList(props) {
                 {supplier.reference}
               </div>
               <div className="col-md-1">
-                <img
-                  src={DeleteImage}
-                  alt="delete me"
+                <Button
+                  bsStyle="warning"
+                  bsSize="small"
                   onClick={() => props.Delete(supplier)}
-                />
+                >
+                  DELETE
+                </Button>
               </div>
             </div>
           )}
         </div>
       </div>
+      <br/>
       <ul id="page-numbers">
-        {renderPageNumbers}
+        <ButtonGroup>
+          {renderPageNumbers}
+        </ButtonGroup>
       </ul>
     </div>
   );
