@@ -39,7 +39,17 @@ function NavigationBar(props) {
       </Navbar.Header>
       <Navbar.Collapse>
       <Nav>
-        <NavDropdown eventKey={1} title="SUPPLIERS" id="basic-nav-dropdown">
+        <NavItem>
+          <Link to="/suppliers">
+            {"SUPPLIERS"}
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/issues">
+            {"ISSUES"}
+          </Link>
+        </NavItem>
+        {/* <NavDropdown eventKey={1} title="SUPPLIERS" id="basic-nav-dropdown">
           <MenuItem to="/suppliers" eventKey={1.1}>
             <Link to="/suppliers">
               {"View"}
@@ -50,25 +60,6 @@ function NavigationBar(props) {
               {"Add"}
             </Link>
           </MenuItem>
-        </NavDropdown>
-        <NavItem>
-          <Link to="/issues">
-            {"ISSUES"}
-          </Link>
-        </NavItem>
-
-        {/* <NavItem eventKey={1} href="/Suppliers">
-          {"SUPPLIERS"}
-        </NavItem> */}
-        {/* <NavItem eventKey={2} href="/Issues">
-          {"ISSUES"}
-        </NavItem> */}
-        {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-          <MenuItem eventKey={3.1}>Action</MenuItem>
-          <MenuItem eventKey={3.2}>Another action</MenuItem>
-          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey={3.4}>Separated link</MenuItem>
         </NavDropdown> */}
       </Nav>
       </Navbar.Collapse>
