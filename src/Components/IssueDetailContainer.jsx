@@ -2,7 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import IssueDetail from "../IssueDetail";
 import IssueOrderContainer from "./IssueOrderContainer";
-import Modal from "react-bootstrap/es/Modal";
+import Modal from "react-bootstrap/lib/Modal";
+import Button from "react-bootstrap/lib/Button";
 
 class IssueDetailContainer extends React.Component {
   constructor(props) {
@@ -11,41 +12,41 @@ class IssueDetailContainer extends React.Component {
     this.handleCancelNewOrder = this.handleCancelNewOrder.bind(this);
   }
 
-  initialiseState(props) {    
-    this.state = { issue: props.Issue,
-    showModal:false };
+  initialiseState(props) {
+    this.state = {
+      issue: props.Issue,
+      showModal: false
+    };
   }
 
-  OrderIssues(){    
+  OrderIssues() {
     this.setState({
-      showModal:true/* ,
-      issue: this.state.issue */
-    })
-
-    /* console.log(this.props.Issue); */
+      showModal: true
+    });
   }
 
-  handleCancelNewOrder(){
-     this.setState({
-      showModal:false      
-    })
+  handleCancelNewOrder() {
+    this.setState({
+      showModal: false
+    });
   }
 
   render() {
-
     return (
       <div>
-        <button onClick={()=>this.OrderIssues()}>
-            {"Order"}
-          </button>
+        <Button onClick={() => this.OrderIssues()}>
+          {"Order"}
+        </Button>
         <div>
           <IssueDetail Issue={this.props.Issue} />
         </div>
-        <div>
-        </div>
+        <div />
         <Modal show={this.state.showModal}>
-          <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} Issue={this.props.Issue} />
-        </Modal>  
+          <IssueOrderContainer
+            CancelNewOrder={this.handleCancelNewOrder}
+            Issue={this.props.Issue}
+          />
+        </Modal>
       </div>
     );
   }
