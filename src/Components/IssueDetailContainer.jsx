@@ -35,13 +35,13 @@ class IssueDetailContainer extends React.Component {
 
     return (
       <div>
+        <button onClick={()=>this.OrderIssues()}>
+            {"Order"}
+          </button>
         <div>
           <IssueDetail Issue={this.props.Issue} />
         </div>
         <div>
-          <button onClick={()=>this.OrderIssues()}>
-            {"Order"}
-          </button>
         </div>
         <Modal show={this.state.showModal}>
           <IssueOrderContainer CancelNewOrder={this.handleCancelNewOrder} Issue={this.props.Issue} />
