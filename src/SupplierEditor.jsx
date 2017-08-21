@@ -37,6 +37,7 @@ function ControlsToShow(props) {
           reference={""}
           SaveSupplier={i => props.SaveSupplier(i)}
           setPageMode={props.setPageMode}
+          history={props.history}
         />
       );
     case PageState.Edit:
@@ -48,6 +49,7 @@ function ControlsToShow(props) {
           reference={props.reference}
           SaveSupplier={i => props.SaveSupplier(i)}
           setPageMode={props.setPageMode}
+          history={props.history}
         />
       );
     case PageState.Saved:

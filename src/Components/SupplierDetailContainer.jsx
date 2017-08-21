@@ -2,6 +2,7 @@ import React from "react";
 import api from "../api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SupplierDetail from "../SupplierDetail";
+import {APP_SUPPLIERS_URL} from "./../Constants";
 
 const PageState = {
   List: 1,
@@ -17,6 +18,7 @@ class SupplierDetailContainer extends React.Component {
     this.setName = this.setName.bind(this);
     this.setCity = this.setCity.bind(this);
     this.setReference = this.setReference.bind(this);
+    this.history = props.history;
   }
 
   componentDidMount() {
@@ -46,11 +48,13 @@ class SupplierDetailContainer extends React.Component {
   }
 
   CancelEdit(index) {
-
     this.props.setPageMode(PageState.List);
+    this.history.push(APP_SUPPLIERS_URL);
   }
 
   SaveSupplier(i) {
+    this.history.push(APP_SUPPLIERS_URL);
+
     if (this.state.supplier.id > 0) {
       api
         .put("/Suppliers/" + this.state.supplier.id, {

@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SupplierEditor from "./../SupplierEditor"
+import SupplierEditor from "./../SupplierEditor";
+import {APP_SUPPLIERS_ADD_URL, APP_SUPPLIERS_EDIT_URL} from "./../Constants";
 
 const PageState = {
   List: 1,
@@ -10,12 +11,13 @@ const PageState = {
 };
 
 class SupplierEditorContainer extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.initialiseState();    
     this.EditSupplier = this.EditSupplier.bind(this);
     this.setPageMode = this.setPageMode.bind(this);
     this.AddNew = this.AddNew.bind(this);
+    this.history = props.history;
   }
 
   initialiseState() {
@@ -30,6 +32,7 @@ class SupplierEditorContainer extends React.Component {
       supplier: supplier,
       PageState: PageState.Edit
     });
+    this.history.push(APP_SUPPLIERS_EDIT_URL + supplier.id);
   }
 
   setPageMode(pageState) {
@@ -40,6 +43,7 @@ class SupplierEditorContainer extends React.Component {
 
   AddNew() {
     this.setPageMode(PageState.New);
+    this.history.push(APP_SUPPLIERS_ADD_URL);
   }
 
   render() {
@@ -54,6 +58,7 @@ class SupplierEditorContainer extends React.Component {
         city={this.state.supplier.city}
         reference={this.state.supplier.reference}
         AddNew={this.AddNew}
+        history={this.history}
          />
     );
   }
