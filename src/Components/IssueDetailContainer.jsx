@@ -4,12 +4,14 @@ import IssueDetail from "../IssueDetail";
 import IssueOrderContainer from "./IssueOrderContainer";
 import Modal from "react-bootstrap/lib/Modal";
 import Button from "react-bootstrap/lib/Button";
+import {APP_ISSUES_VIEW_URL, APP_ORDER} from "./../Constants.jsx";
 
 class IssueDetailContainer extends React.Component {
   constructor(props) {
     super(props);
     this.initialiseState(props);
     this.handleCancelNewOrder = this.handleCancelNewOrder.bind(this);
+    this.history = props.history;
   }
 
   initialiseState(props) {
@@ -19,10 +21,11 @@ class IssueDetailContainer extends React.Component {
     };
   }
 
-  OrderIssues() {
+  OrderIssues(issue) {
     this.setState({
       showModal: true
     });
+    this.history.push(APP_ISSUES_VIEW_URL + "id/" + issue.id + "/" + APP_ORDER);
   }
 
   handleCancelNewOrder() {
@@ -35,7 +38,7 @@ class IssueDetailContainer extends React.Component {
     if (props.Issue.id) {
       return (
         <div>
-          <Button onClick={() => this.OrderIssues()}>
+          <Button onClick={() => this.OrderIssues(props.Issue)}>
             {"Order"}
           </Button>
           <div>

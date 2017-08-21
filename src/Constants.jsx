@@ -15,7 +15,8 @@ const APP_SUPPLIERS_ADD_URL = APP_SUPPLIERS_URL + 'add/';
 const APP_SUPPLIERS_EDIT_URL = APP_SUPPLIERS_URL +  'edit/';
 
 const APP_ISSUES_URL = APP_HOME + 'issues/';
-const APP_ORDERS_URL = APP_HOME + 'orders';
+const APP_ISSUES_VIEW_URL = APP_ISSUES_URL + 'view/';
+const APP_ORDER = 'order/';
 
 export  {
     API_BASE_URL,
@@ -27,4 +28,6 @@ export  {
     APP_SUPPLIERS_ADD_URL,
     APP_SUPPLIERS_EDIT_URL,
     APP_ISSUES_URL,
+    APP_ISSUES_VIEW_URL,
+    APP_ORDER,
 };

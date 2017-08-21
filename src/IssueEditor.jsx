@@ -9,7 +9,7 @@ function IssueEditor(props) {
           <IssueListContainer View={i => props.View(i)} />
         </div>
         <div className="col-md-6">
-          <IssueDetailContainer Issue={props.Issue} />
+          <IssueDetailContainer Issue={props.Issue} history={props.history} />
         </div>              
       </div>
   );
