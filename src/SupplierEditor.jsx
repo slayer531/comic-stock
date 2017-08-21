@@ -13,7 +13,7 @@ const PageState = {
 function AddNewVisibility(props) {
   if (props.PageState === PageState.List) {
     return (
-      <div className="col-md-1 col-md-offset-11">
+      <div className="col-md-2">
         <Button onClick={i => props.AddNew(i)}>
           {"ADD"}
           </Button>        
@@ -63,7 +63,7 @@ function ControlsToShow(props) {
 
 function SupplierEditor(props) {
   return (
-    <div className="container">
+    <div>
       {AddNewVisibility(props)}
       {ControlsToShow(props)}
     </div>

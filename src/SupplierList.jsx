@@ -34,7 +34,7 @@ function SupplierList(props) {
   return (
     <div className="container border">
       <div className="row">
-        <div className="col-md-4 col-md-offset-8">
+        <div className="col-md-4 col-md-offset-2">
           <label htmlFor="Search" value="">
             Search:
           </label>
@@ -44,16 +44,25 @@ function SupplierList(props) {
       <div className="">
         <div className="row">
           <Panel header="">
-            <label className="col-md-1">Edit</label>
+            <label className="col-md-1"></label>
+            <label className="col-md-1"></label>
             <label className="col-md-4">Name</label>
             <label className="col-md-3">City</label>
-            <label className="col-md-3">Reference</label>
-            <label className="col-md-1">Delete</label>
+            <label className="col-md-3">Reference</label>            
           </Panel>
         </div>
         <div className=".row">
           {currentSuppliers.map((supplier, index) =>
             <div key={index} className="row altrow">
+              <div className="col-md-1">
+                <Button
+                  bsStyle="warning"
+                  bsSize="small"
+                  onClick={() => props.Delete(supplier)}
+                >
+                  DELETE
+                </Button>
+              </div>
               <div className="col-md-1">
                 <Button
                   bsStyle="info"
@@ -72,15 +81,7 @@ function SupplierList(props) {
               <div className="col-md-3">
                 {supplier.reference}
               </div>
-              <div className="col-md-1">
-                <Button
-                  bsStyle="warning"
-                  bsSize="small"
-                  onClick={() => props.Delete(supplier)}
-                >
-                  DELETE
-                </Button>
-              </div>
+              
             </div>
           )}
         </div>
