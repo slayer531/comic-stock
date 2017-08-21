@@ -4,8 +4,7 @@ import IssueListContainer from "./Components/IssueListContainer";
 
 function IssueEditor(props) {
   return (
-    <div className="container">
-      <div className="row">
+     <div className="row">
         <div className="col-md-6">
           <IssueListContainer View={i => props.View(i)} />
         </div>
@@ -13,7 +12,6 @@ function IssueEditor(props) {
           <IssueDetailContainer Issue={props.Issue} />
         </div>              
       </div>
-    </div>
   );
 }
 
