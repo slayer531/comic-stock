@@ -2,6 +2,8 @@ import React from "react";
 import DeleteImage from "./images/delete-x-square-button.png";
 import Button from "react-bootstrap/lib/Button";
 import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
+import Label from "react-bootstrap/lib/Label";
+import Panel from "react-bootstrap/lib/Panel";
 
 function SupplierList(props) {
   const currentPage = props.CurrentPage;
@@ -32,7 +34,7 @@ function SupplierList(props) {
   });
 
   return (
-    <div>
+    <div className="container border">
       <div className="row">
         <div className="col-md-4 col-md-offset-8">
           <label htmlFor="Search" value="">
@@ -41,13 +43,15 @@ function SupplierList(props) {
           <input onChange={props.FilterSuppliers} />
         </div>
       </div>
-      <div className="container border">
-        <div className="row border">
-          <div className="col-md-1">Edit</div>
-          <div className="col-md-4">Name</div>
-          <div className="col-md-3">City</div>
-          <div className="col-md-3">Reference</div>
-          <div className="col-md-1">Delete</div>
+      <div className="">
+        <div className="row">
+          <Panel header="">
+            <label className="col-md-1">Edit</label>
+            <label className="col-md-4">Name</label>
+            <label className="col-md-3">City</label>
+            <label className="col-md-3">Reference</label>
+            <label className="col-md-1">Delete</label>
+          </Panel>
         </div>
         <div className=".row">
           {currentSuppliers.map((supplier, index) =>
@@ -83,7 +87,7 @@ function SupplierList(props) {
           )}
         </div>
       </div>
-      <br/>
+      <br />
       <ul id="page-numbers">
         <ButtonGroup>
           {renderPageNumbers}
