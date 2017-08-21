@@ -9,21 +9,12 @@ import { BrowserRouter, Route } from "react-router-dom";
 import HomePage from "./HomePage.jsx";
 
 import {
-  APP_HOME,
   APP_HOME_PAGE,
   APP_ISSUES_URL,
   APP_SUPPLIERS_URL
 } from "./Constants";
 
 class ComicStrip extends React.Component {
-  constructor() {
-    super();
-    this.initialiseState();
-  }
-
-  initialiseState() {
-    this.state = {};
-  }
 
   render() {
     return (
@@ -42,6 +33,4 @@ class ComicStrip extends React.Component {
      <Route path={"/"} component={ComicStrip}/>
   </BrowserRouter>,
   document.getElementById("root")
-);   
-
-/* ReactDOM.render(<ParamsExample />, document.getElementById("root")); */
+);
