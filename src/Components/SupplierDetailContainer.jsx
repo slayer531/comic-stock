@@ -117,7 +117,6 @@ class SupplierDetailContainer extends React.Component {
 
   render() {
     return (
-      <div>
         <SupplierDetail
           {...this.state.supplier}
           SaveSupplier={e => this.SaveSupplier(e)}
@@ -126,7 +125,6 @@ class SupplierDetailContainer extends React.Component {
           setCity={this.setCity}
           setReference={this.setReference}
         />
-      </div>
     );
   }
 }

@@ -41,15 +41,15 @@ function IssueDetail(props) {
         </div>
         <div className=".row">
           <Col xs={6} md={4}>
-              <Image
-                src={
-                  props.Issue.images != null && props.Issue.images.length > 0
-                    ? props.Issue.images[0].pathIncludingExtension
-                    : NoImage
-                }
-                rounded
-              />
-            </Col>
+            <Image
+              src={
+                props.Issue.images != null && props.Issue.images.length > 0
+                  ? props.Issue.images[0].pathIncludingExtension
+                  : NoImage
+              }
+              rounded
+            />
+          </Col>
         </div>
       </div>
     </div>
