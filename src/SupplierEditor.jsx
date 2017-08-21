@@ -1,7 +1,7 @@
 import React from "react";
-import AddSupplierImage from "./images/add.png";
 import SupplierDetailContainer from "./Components/SupplierDetailContainer";
 import SupplierListContainer from "./Components/SupplierListContainer";
+import Button from "react-bootstrap/lib/Button";
 
 const PageState = {
   List: 1,
@@ -14,11 +14,9 @@ function AddNewVisibility(props) {
   if (props.PageState === PageState.List) {
     return (
       <div className="col-md-1 col-md-offset-11">
-        <img
-          src={AddSupplierImage}
-          alt="Add new supplier"
-          onClick={i => props.AddNew(i)}
-        />
+        <Button onClick={i => props.AddNew(i)}>
+          {"ADD"}
+          </Button>        
       </div>
     );
   }
