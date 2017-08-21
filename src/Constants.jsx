@@ -10,6 +10,8 @@ const API_ORDERS_URL = API_BASE_URL + API_ORDERS_ENDPOINT;
 
 const APP_HOME = '/';
 
+const APP_HOME_PAGE = '/home';
+
 const APP_SUPPLIERS_URL = APP_HOME + 'suppliers/';
 const APP_SUPPLIERS_ADD_URL = APP_SUPPLIERS_URL + 'add/';
 const APP_SUPPLIERS_EDIT_URL = APP_SUPPLIERS_URL +  'edit/';
@@ -30,4 +32,5 @@ export  {
     APP_ISSUES_URL,
     APP_ISSUES_VIEW_URL,
     APP_ORDER,
+    APP_HOME_PAGE,
 };

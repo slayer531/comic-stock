@@ -16,6 +16,11 @@ function NavigationBar(props) {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
+           <LinkContainer to="/home">
+            <NavItem eventKey={1}>
+              {"HOME"}
+            </NavItem>
+          </LinkContainer>
           <LinkContainer to="/suppliers">
             <NavItem eventKey={1}>
               {"SUPPLIERS"}
