@@ -2,39 +2,31 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import SaveImage from "./images/save-resume.png";
 import CancelImage from "./images/cancel.jpg";
-/* import * as bootstrap from 'react-bootstrap'; */
+import Button from "react-bootstrap/lib/Button";
 
 function SupplierDetail(props) {
   return (
-    <div className="container border">
+    <div>
       <div className="row">
-        <div className="col-md-3">Name</div>
-        <div className="col-md-3">City</div>
-        <div className="col-md-3">Reference</div>
-        <div className="col-md-3">Save</div>
+        <div className="col-md-2 col-md-offset-2">Name</div>
+        <input value={props.name} onChange={props.setName} />
+        <input className="hiddenControl" value={props.id} />  
       </div>
+       <div className="row">
+        <div className="col-md-2 col-md-offset-2">City</div>
+        <input value={props.city} onChange={props.setCity} />
+      </div>
+       <div className="row">        
+        <div className="col-md-2 col-md-offset-2">Reference</div>
+        <input value={props.reference} onChange={props.setReference} />
+      </div>
+      <br/>
       <div className="row">
-        <div className="col-md-3">
-          <input className="hiddenControl" value={props.id} />
-          <input value={props.name} onChange={props.setName} />
+        <div className="col-md-2 col-md-offset-3">
+          <Button onClick={i => props.SaveSupplier(i)}>SAVE</Button>
         </div>
-        <div className="col-md-3">
-          <input value={props.city} onChange={props.setCity} />
-        </div>
-        <div className="col-md-3">
-          <input value={props.reference} onChange={props.setReference} />
-        </div>
-        <div className="col-md-3">
-          <img
-            src={SaveImage}
-            alt="save me"
-            onClick={i => props.SaveSupplier(i)}
-          />
-          <img
-            src={CancelImage}
-            alt="cancel editing"
-            onClick={i => props.Cancel(i)}
-          />
+        <div className="col-md-2 col-md-offset-1">    
+          <Button onClick={i => props.Cancel(i)}>CANCEL</Button>    
         </div>
       </div>
     </div>
