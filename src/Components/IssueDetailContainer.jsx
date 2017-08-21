@@ -31,15 +31,25 @@ class IssueDetailContainer extends React.Component {
     });
   }
 
+  DisplayIssueDetail(props) {
+    if (props.Issue.id) {
+      return (
+        <div>
+          <Button onClick={() => this.OrderIssues()}>
+            {"Order"}
+          </Button>
+          <div>
+            <IssueDetail Issue={props.Issue} />
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div>
-        <Button onClick={() => this.OrderIssues()}>
-          {"Order"}
-        </Button>
-        <div>
-          <IssueDetail Issue={this.props.Issue} />
-        </div>
+        {this.DisplayIssueDetail(this.props)}
         <div />
         <Modal show={this.state.showModal}>
           <IssueOrderContainer
