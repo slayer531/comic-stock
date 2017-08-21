@@ -1,6 +1,5 @@
 import React from "react";
 import NoImage from "./images/not_available_icon.jpg";
-import Col from "react-bootstrap/lib/Col";
 import Thumbnail from "react-bootstrap/lib/Thumbnail";
 
 function IssueList(props) {

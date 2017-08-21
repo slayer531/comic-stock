@@ -1,7 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import SaveImage from "./images/save-resume.png";
-import CancelImage from "./images/cancel.jpg";
 import Button from "react-bootstrap/lib/Button";
 
 function SupplierDetail(props) {

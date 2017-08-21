@@ -1,8 +1,6 @@
 import React from "react";
-import DeleteImage from "./images/delete-x-square-button.png";
 import Button from "react-bootstrap/lib/Button";
 import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
-import Label from "react-bootstrap/lib/Label";
 import Panel from "react-bootstrap/lib/Panel";
 
 function SupplierList(props) {
