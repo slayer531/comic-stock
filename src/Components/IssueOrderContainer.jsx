@@ -17,7 +17,6 @@ class IssueOrderContainer extends React.Component {
     this.onAmountChangeHandle = this.onAmountChangeHandle.bind(this);
     this.onConditionChangeHandle = this.onConditionChangeHandle.bind(this);
     this.onSupplierChangeHandle = this.onSupplierChangeHandle.bind(this);
-
   }
 
   initialiseState(props) {
@@ -36,23 +35,36 @@ class IssueOrderContainer extends React.Component {
     this.GetSuppliers();
   }
 
-//PUT /api/Orders/{supplierId}/issues/{issueId}/Put
+  //PUT /api/Orders/{supplierId}/issues/{issueId}/Put
   SubmitNewIssueOrder() {
-    console.log("trying to add order with supplierId: " + this.state.order.SupplierId + " and issueId: " + this.state.issue.id);
+    console.log(
+      "trying to add order with supplierId: " +
+        this.state.order.SupplierId +
+        " and issueId: " +
+        this.state.issue.id
+    );
     console.log(this.state.issue);
-    api.put("/Orders/" + this.state.order.SupplierId + "/issues/" + this.state.issue.id + "/put",{
+    api
+      .put(
+        "/Orders/" +
+          this.state.order.SupplierId +
+          "/issues/" +
+          this.state.issue.id +
+          "/put",
+        {
           orderDate: new Date(),
           issue: this.state.issue,
           items: this.state.order.items,
           shipmentReference: "I added an order :-)"
-        })
-        .then(response => {
-          console.log("successfully pushed to API");
-        })
-        .catch(function(error) {
-          alert("An error occurred while submitting the order " + error);
-          console.error(error);
-        });
+        }
+      )
+      .then(response => {
+        console.log("successfully pushed to API");
+      })
+      .catch(function(error) {
+        alert("An error occurred while submitting the order " + error);
+        console.error(error);
+      });
   }
 
   GetSuppliers() {
@@ -86,7 +98,7 @@ class IssueOrderContainer extends React.Component {
     });
   }
 
-  onConditionChangeHandle(event){
+  onConditionChangeHandle(event) {
     var order = this.state.order;
 
     order.items[0].condition = event.target.value;
@@ -98,6 +110,7 @@ class IssueOrderContainer extends React.Component {
   render() {
     return (
       <div className="container">
+        <br/>
         <div className="row">
           <div className="col-md-4">
             <IssueOrder
@@ -109,14 +122,20 @@ class IssueOrderContainer extends React.Component {
             />
           </div>
         </div>
+        <br/>
         <div className="row">
-          <button onClick={() => this.SubmitNewIssueOrder()}>
-            {"Submit Order"}
-          </button>
-          <button onClick={this.props.CancelNewOrder}>
-            {"Cancel"}
-          </button>
+          <div className="col-md-3 col-md-offset-1">            
+             <button onClick={this.props.CancelNewOrder}>
+              {"Cancel"}
+            </button>
+          </div>
+          <div className=".col-md-3 .col-md-offset-1">
+           <button onClick={() => this.SubmitNewIssueOrder()}>
+              {"Submit Order"}
+            </button>
+          </div>
         </div>
+        <br/>
       </div>
     );
   }
