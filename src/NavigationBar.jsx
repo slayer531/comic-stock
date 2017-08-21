@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "react-bootstrap/lib/Navbar";
 import Nav from "react-bootstrap/lib/Nav";
 import NavItem from "react-bootstrap/lib/NavItem";
-import { APP_SUPPLIERS_URL } from "./Constants";
 import { LinkContainer } from "react-router-bootstrap";
 
 function NavigationBar(props) {
