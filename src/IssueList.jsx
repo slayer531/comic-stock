@@ -8,7 +8,7 @@ function IssueList(props) {
   return (
     <div>
         {issues.map((issue, index) =>
-            <Thumbnail
+            <Thumbnail key={index}
                     src={
                       issue.images.length > 0
                         ? issue.images[0].pathIncludingExtension

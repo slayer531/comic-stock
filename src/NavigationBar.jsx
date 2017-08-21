@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "react-bootstrap/lib/Navbar";
 import Nav from "react-bootstrap/lib/Nav";
 import NavItem from "react-bootstrap/lib/NavItem";
-import { Link } from "react-router-dom";
+import { APP_SUPPLIERS_URL } from "./Constants";
+import { LinkContainer } from "react-router-bootstrap";
 
 function NavigationBar(props) {
   return (
@@ -14,18 +15,18 @@ function NavigationBar(props) {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-      <Nav>
-        <NavItem>
-          <Link to="/suppliers">
-            {"SUPPLIERS"}
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/issues">
-            {"ISSUES"}
-          </Link>
-        </NavItem>        
-      </Nav>
+        <Nav>
+          <LinkContainer to="/suppliers">
+            <NavItem eventKey={1}>
+              {"SUPPLIERS"}
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/issues">
+            <NavItem eventKey={1}>
+              {"ISSUES"}
+            </NavItem>
+          </LinkContainer>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
