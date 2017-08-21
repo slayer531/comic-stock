@@ -24,19 +24,7 @@ function NavigationBar(props) {
           <Link to="/issues">
             {"ISSUES"}
           </Link>
-        </NavItem>
-        {/* <NavDropdown eventKey={1} title="SUPPLIERS" id="basic-nav-dropdown">
-          <MenuItem to="/suppliers" eventKey={1.1}>
-            <Link to="/suppliers">
-              {"View"}
-            </Link>
-          </MenuItem>
-          <MenuItem eventKey={1.2}>
-            <Link to="/suppliers/add">
-              {"Add"}
-            </Link>
-          </MenuItem>
-        </NavDropdown> */}
+        </NavItem>        
       </Nav>
       </Navbar.Collapse>
     </Navbar>
