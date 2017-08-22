@@ -23,7 +23,7 @@ class ComicStrip extends React.Component {
         <Route exact path={APP_HOME_PAGE} component={HomePage} history={this.history} />
         <Route path={APP_SUPPLIERS_URL} component={SupplierEditorContainer} history={this.history} />
         <Route path={APP_ISSUES_URL} component={IssueEditorContainer} history={this.history} />
-        <Route path={`${APP_ISSUES_URL}/view/id/:issueId`} component={IssueEditorContainer} history={this.history} />
+        <Route path={'/issues/view/id/:issueId'} component={IssueEditorContainer} history={this.history} />
       </div>
     );
   }

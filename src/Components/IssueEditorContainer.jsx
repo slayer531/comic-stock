@@ -6,11 +6,15 @@ import {APP_ISSUES_VIEW_URL} from "./../Constants.jsx";
 
 class IssueEditorContainer extends React.Component {
   constructor(props) {
-    console.log('props.match.id', props.match, props.match.params)
-    super();
+    super(props);
     this.initialiseState();
     this.View = this.View.bind(this);
     this.history = props.history;
+  }
+
+  componentDidMount () {
+    const issueId = this.props.match.params.issueId
+    this.GetIssue(issueId)
   }
 
   initialiseState() {
@@ -31,6 +35,7 @@ class IssueEditorContainer extends React.Component {
         console.error(e);
       });
   }
+
   View(issueId) {
     this.history.push(APP_ISSUES_VIEW_URL + "id/" + issueId);
     this.GetIssue(issueId);
