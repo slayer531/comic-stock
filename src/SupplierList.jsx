@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/lib/Button";
 import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
 import Panel from "react-bootstrap/lib/Panel";
+import FormControl from "react-bootstrap/lib/FormControl";
 
 function SupplierList(props) {
   const currentPage = props.CurrentPage;
@@ -34,11 +35,8 @@ function SupplierList(props) {
   return (
     <div className="container border">
       <div className="row">
-        <div className="col-md-4 col-md-offset-2">
-          <label htmlFor="Search" value="">
-            Search:
-          </label>
-          <input onChange={props.FilterSuppliers} />
+        <div className="col-md-4 col-md-offset-2">         
+          <FormControl type="text" placeholder="Search..." onChange={props.FilterSuppliers} />
         </div>
       </div>
       <div className="">

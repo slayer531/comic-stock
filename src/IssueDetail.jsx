@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import dateFormat from "dateformat";
 import NoImage from "./images/not_available_icon.jpg";
-import Col from "react-bootstrap/lib/Col";
 import Image from "react-bootstrap/lib/Image";
 
 function IssueDetail(props) {
