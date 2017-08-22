@@ -40,8 +40,7 @@ function IssueDetail(props) {
           </label>
         </div>
         <div className=".row">
-          <Col xs={6} md={4}>
-            <Image
+          <Image
               src={
                 props.Issue.images != null && props.Issue.images.length > 0
                   ? props.Issue.images[0].pathIncludingExtension
@@ -49,7 +48,6 @@ function IssueDetail(props) {
               }
               rounded
             />
-          </Col>
         </div>
       </div>
     </div>
