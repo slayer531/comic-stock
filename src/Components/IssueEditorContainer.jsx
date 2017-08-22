@@ -6,6 +6,7 @@ import {APP_ISSUES_VIEW_URL} from "./../Constants.jsx";
 
 class IssueEditorContainer extends React.Component {
   constructor(props) {
+    console.log('props.match.id', props.match, props.match.params)
     super();
     this.initialiseState();
     this.View = this.View.bind(this);
