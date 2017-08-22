@@ -10,9 +10,8 @@ function IssueList(props) {
     <div className="row">
       <div className="col-md-6">
         {issuesFirstHalf.map((issue, index) =>
-          <div className="col-md-12 thumbnail">
+          <div key={index} className="col-md-12 thumbnail">
             <Image
-              key={index}
               src={
                 issue.images.length > 0
                   ? issue.images[0].pathIncludingExtension
@@ -26,9 +25,8 @@ function IssueList(props) {
       </div>
       <div className="col-md-6">
         {issuesSecondHalf.map((issue, index) =>
-          <div className="col-md-12 thumbnail">
+          <div key={index} className="col-md-12 thumbnail">
             <Image
-              key={index}
               src={
                 issue.images.length > 0
                   ? issue.images[0].pathIncludingExtension
@@ -45,3 +43,4 @@ function IssueList(props) {
 }
 
 export default IssueList;
+
