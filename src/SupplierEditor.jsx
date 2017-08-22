@@ -13,10 +13,15 @@ const PageState = {
 function AddNewVisibility(props) {
   if (props.PageState === PageState.List) {
     return (
-      <div className="col-md-2">
-        <Button onClick={i => props.AddNew(i)}>
-          {"ADD"}
-          </Button>        
+      <div className="row">
+        <div className="col-md-2">
+          <Button
+            bsStyle="primary"
+            onClick={i => props.AddNew(i)}
+          >
+            {"ADD SUPPLIER"}
+          </Button>
+        </div>
       </div>
     );
   }
@@ -59,12 +64,12 @@ function ControlsToShow(props) {
     default:
       alert("Invalid Page State encountered");
   }
-};
+}
 
 function SupplierEditor(props) {
   return (
     <div>
-      {AddNewVisibility(props)}
+      {AddNewVisibility(props)}<br/>
       {ControlsToShow(props)}
     </div>
   );

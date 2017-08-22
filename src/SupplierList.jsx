@@ -33,12 +33,13 @@ function SupplierList(props) {
   });
 
   return (
-    <div className="container border">
+    <div>
       <div className="row">
-        <div className="col-md-4 col-md-offset-2">         
+        <div className="col-md-4">         
           <FormControl type="text" placeholder="Search..." onChange={props.FilterSuppliers} />
         </div>
       </div>
+      <br/>
       <div className="">
         <div className="row">
           <Panel header="">
