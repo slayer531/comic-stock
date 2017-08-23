@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 0,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "git.enableSmartCommit": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.renderIndentGuides": false,
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+}
