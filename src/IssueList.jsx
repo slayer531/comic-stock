@@ -9,8 +9,8 @@ function IssueList(props) {
   return (
     <div className="row">
       <div className="col-md-6">
-        {issuesFirstHalf.map((issue, index) =>
-          <div key={index} className="col-md-12 thumbnail">
+        {issuesFirstHalf.map(issue =>
+          <div key={issue.id} className="col-md-12 thumbnail">
             <Image
               src={
                 issue.images.length > 0
@@ -24,8 +24,8 @@ function IssueList(props) {
         )}
       </div>
       <div className="col-md-6">
-        {issuesSecondHalf.map((issue, index) =>
-          <div key={index} className="col-md-12 thumbnail">
+        {issuesSecondHalf.map(issue =>
+          <div key={issue.id} className="col-md-12 thumbnail">
             <Image
               src={
                 issue.images.length > 0
