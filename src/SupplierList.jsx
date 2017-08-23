@@ -1,8 +1,8 @@
-import React from "react";
-import Button from "react-bootstrap/lib/Button";
-import ButtonGroup from "react-bootstrap/lib/ButtonGroup";
-import Panel from "react-bootstrap/lib/Panel";
-import FormControl from "react-bootstrap/lib/FormControl";
+import React from 'react';
+import Button from 'react-bootstrap/lib/Button';
+import ButtonGroup from 'react-bootstrap/lib/ButtonGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import PropTypes from 'prop-types';
 
 function SupplierList(props) {
   const currentPage = props.CurrentPage;
@@ -12,80 +12,80 @@ function SupplierList(props) {
   const indexOfFirstSupplier = indexOfLastSupplier - suppliersPerPage;
   const currentSuppliers = suppliers.slice(
     indexOfFirstSupplier,
-    indexOfLastSupplier
+    indexOfLastSupplier,
   );
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(suppliers.length / suppliersPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(suppliers.length / suppliersPerPage); i += 1) {
     pageNumbers.push(i);
   }
 
-  const renderPageNumbers = pageNumbers.map(number => {
-    return (
-      <Button
-        key={number}
-        id={number}
-        onClick={() => props.handlePageClick(number)}
-      >
-        {number}
-      </Button>
-    );
-  });
+  const renderPageNumbers = pageNumbers.map(number =>
+    <Button
+      key={number}
+      id={number}
+      onClick={() => props.handlePageClick(number)}
+    >
+      {number}
+    </Button>,
+  );
 
   return (
     <div>
       <div className="row">
-        <div className="col-md-4">         
-          <FormControl type="text" placeholder="Search..." onChange={props.FilterSuppliers} />
-        </div>
-      </div>
-      <br/>
-      <div className="">
-        <div className="row">
-          <Panel header="">
-            <label className="col-md-1"></label>
-            <label className="col-md-1"></label>
-            <label className="col-md-4">Name</label>
-            <label className="col-md-3">City</label>
-            <label className="col-md-3">Reference</label>            
-          </Panel>
-        </div>
-        <div className=".row">
-          {currentSuppliers.map((supplier, index) =>
-            <div key={index} className="row altrow">
-              <div className="col-md-1">
-                <Button
-                  bsStyle="warning"
-                  bsSize="small"
-                  onClick={() => props.Delete(supplier)}
-                >
-                  DELETE
-                </Button>
-              </div>
-              <div className="col-md-1">
-                <Button
-                  bsStyle="info"
-                  bsSize="small"
-                  onClick={() => props.Edit(supplier)}
-                >
-                  EDIT
-                </Button>
-              </div>
-              <div className="col-md-4">
-                {supplier.name}
-              </div>
-              <div className="col-md-3">
-                {supplier.city}
-              </div>
-              <div className="col-md-3">
-                {supplier.reference}
-              </div>
-              
-            </div>
-          )}
+        <div className="col-md-4">
+          <FormControl
+            type="text"
+            placeholder="Search..."
+            onChange={props.FilterSuppliers}
+          />
         </div>
       </div>
       <br />
+      <div className="table-responsive">
+        <table className="table table-hover">
+          <thead>
+            <td className="col-md-1" />
+            <td className="col-md-1" />
+            <td className="col-md-4">Name</td>
+            <td className="col-md-3">City</td>
+            <td className="col-md-3">Reference</td>
+          </thead>
+          <tbody>
+            {currentSuppliers.map(supplier =>
+              <tr key={supplier.id}>
+                <td className="col-md-1">
+                  <Button
+                    bsStyle="danger"
+                    bsSize="small"
+                    onClick={() => props.Delete(supplier)}
+                  >
+                    DELETE
+                  </Button>
+                </td>
+                <td className="col-md-1">
+                  <Button
+                    bsStyle="info"
+                    bsSize="small"
+                    onClick={() => props.Edit(supplier)}
+                  >
+                    EDIT
+                  </Button>
+                </td>
+                <td className="col-md-4">
+                  {supplier.name}
+                </td>
+                <td className="col-md-3">
+                  {supplier.city}
+                </td>
+                <td className="col-md-3">
+                  {supplier.reference}
+                </td>
+              </tr>,
+            )}
+          </tbody>
+        </table>
+      </div>
       <ul id="page-numbers">
         <ButtonGroup>
           {renderPageNumbers}
@@ -94,5 +94,18 @@ function SupplierList(props) {
     </div>
   );
 }
+
+SupplierList.propTypes = {
+  CurrentPage: PropTypes.number,
+  SuppliersToShow: PropTypes.number,
+  suppliers: PropTypes.arrayOf(PropTypes.any),
+  FilterSuppliers: PropTypes.func,
+};
+SupplierList.defaultProps = {
+  CurrentPage: 1,
+  SuppliersToShow: 10,
+  suppliers: [],
+  FilterSuppliers: {},
+};
 
 export default SupplierList;
