@@ -103,6 +103,7 @@ IssueOrder.propTypes = {
   onSupplierChange: PropTypes.func,
   order: PropTypes.objectOf(PropTypes.any),
   onAmountChange: PropTypes.func,
+  onConditionChange: PropTypes.func,
 };
 
 IssueOrder.defaultProps = {
@@ -110,6 +111,7 @@ IssueOrder.defaultProps = {
   onSupplierChange: {},
   order: {},
   onAmountChange: {},
+  onConditionChange: {},
 };
 
 export default IssueOrder;

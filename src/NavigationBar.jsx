@@ -1,10 +1,10 @@
-import React from "react";
-import Navbar from "react-bootstrap/lib/Navbar";
-import Nav from "react-bootstrap/lib/Nav";
-import NavItem from "react-bootstrap/lib/NavItem";
-import { LinkContainer } from "react-router-bootstrap";
+import React from 'react';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import { LinkContainer } from 'react-router-bootstrap';
 
-function NavigationBar(props) {
+function NavigationBar() {
   return (
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
@@ -15,19 +15,19 @@ function NavigationBar(props) {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-           <LinkContainer to="/home">
+          <LinkContainer to="/home">
             <NavItem eventKey={1}>
-              {"HOME"}
+              {'HOME'}
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/suppliers">
             <NavItem eventKey={1}>
-              {"SUPPLIERS"}
+              {'SUPPLIERS'}
             </NavItem>
           </LinkContainer>
           <LinkContainer to="/issues">
             <NavItem eventKey={1}>
-              {"ISSUES"}
+              {'ISSUES'}
             </NavItem>
           </LinkContainer>
         </Nav>

@@ -1,13 +1,14 @@
-import React from "react";
-import SupplierDetailContainer from "./Components/SupplierDetailContainer";
-import SupplierListContainer from "./Components/SupplierListContainer";
-import Button from "react-bootstrap/lib/Button";
+import React from 'react';
+import Button from 'react-bootstrap/lib/Button';
+import PropTypes from 'prop-types';
+import SupplierDetailContainer from './Components/SupplierDetailContainer';
+import SupplierListContainer from './Components/SupplierListContainer';
 
 const PageState = {
   List: 1,
   Edit: 2,
   New: 3,
-  Saved: 4
+  Saved: 4,
 };
 
 function AddNewVisibility(props) {
@@ -15,11 +16,8 @@ function AddNewVisibility(props) {
     return (
       <div className="row">
         <div className="col-md-2">
-          <Button
-            bsStyle="primary"
-            onClick={i => props.AddNew(i)}
-          >
-            {"ADD SUPPLIER"}
+          <Button bsStyle="primary" onClick={i => props.AddNew(i)}>
+            {'ADD SUPPLIER'}
           </Button>
         </div>
       </div>
@@ -37,9 +35,9 @@ function ControlsToShow(props) {
       return (
         <SupplierDetailContainer
           id={0}
-          name={""}
-          city={""}
-          reference={""}
+          name={''}
+          city={''}
+          reference={''}
           SaveSupplier={i => props.SaveSupplier(i)}
           setPageMode={props.setPageMode}
           history={props.history}
@@ -62,17 +60,53 @@ function ControlsToShow(props) {
         <SupplierListContainer EditSupplier={i => props.EditSupplier(i)} />
       );
     default:
-      alert("Invalid Page State encountered");
+      console.error('Invalid Page State encountered');
   }
 }
 
 function SupplierEditor(props) {
   return (
     <div>
-      {AddNewVisibility(props)}<br/>
+      {AddNewVisibility(props)}
+      <br />
       {ControlsToShow(props)}
     </div>
   );
 }
+
+ControlsToShow.propTypes = {
+  PageState: PropTypes.objectOf(PropTypes.any),
+  EditSupplier: PropTypes.func,
+  SaveSupplier: PropTypes.func,
+  setPageMode: PropTypes.func,
+  history: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  city: PropTypes.string,
+  reference: PropTypes.string,
+};
+
+ControlsToShow.defaultProps = {
+  PageState: {},
+  EditSupplier: {},
+  AddNew: {},
+  SaveSupplier: {},
+  setPageMode: {},
+  history: {},
+  id: PropTypes.string,
+  name: PropTypes.string,
+  city: PropTypes.string,
+  reference: PropTypes.string,
+};
+
+AddNewVisibility.propTypes = {
+  AddNew: PropTypes.func,
+  PageState: PropTypes.objectOf(PropTypes.any),
+};
+
+AddNewVisibility.defaultProps = {
+  AddNew: {},
+  PageState: {},
+};
 
 export default SupplierEditor;

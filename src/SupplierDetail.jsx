@@ -1,6 +1,7 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import Button from "react-bootstrap/lib/Button";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/lib/Button';
+import PropTypes from 'prop-types';
 
 function SupplierDetail(props) {
   return (
@@ -30,5 +31,29 @@ function SupplierDetail(props) {
     </div>
   );
 }
+
+SupplierDetail.propTypes = {
+  name: PropTypes.string,
+  setName: PropTypes.func,
+  id: PropTypes.string,
+  city: PropTypes.string,
+  setCity: PropTypes.func,
+  reference: PropTypes.string,
+  setReference: PropTypes.func,
+  Cancel: PropTypes.func,
+  SaveSupplier: PropTypes.func,
+};
+
+SupplierDetail.defaultProps = {
+  name: '',
+  setName: {},
+  id: '',
+  city: '',
+  setCity: {},
+  reference: '',
+  setReference: {},
+  Cancel: {},
+  SaveSupplier: {},
+};
 
 export default SupplierDetail;
