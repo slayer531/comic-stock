@@ -7,6 +7,7 @@ class IssueListContainer extends React.Component {
   constructor(props) {
     super(props);
     this.initialiseState();
+    this.GetIssues();
   }
 
   initialiseState() {
@@ -28,9 +29,9 @@ class IssueListContainer extends React.Component {
       });
   }
 
-  componentDidMount() {
+  /* componentDidMount() {
     this.GetIssues();
-  }
+  } */
 
   render() {
     return <IssueList Issues={this.state.issueData} View={this.props.View} />;
