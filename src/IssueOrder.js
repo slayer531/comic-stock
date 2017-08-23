@@ -1,43 +1,41 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import React, { PropTypes } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const IssueCondition = {
   VeryFine: 1,
   Fine: 2,
   Good: 3,
-  Poor: 4
+  Poor: 4,
 };
 
 export function IssueConditionDisplayValue(issueCondition) {
   switch (issueCondition) {
     case IssueCondition.VeryFine:
-      return "Very Fine";
+      return 'Very Fine';
 
     case IssueCondition.Fine:
-      return "Fine";
+      return 'Fine';
 
     case IssueCondition.Good:
-      return "Good";
+      return 'Good';
 
     case IssueCondition.Poor:
-      return "Poor";
+      return 'Poor';
 
     default:
       return console.error(
-        "Unknown issue condition encountered: " + issueCondition
+        `Unknown issue condition encountered: ${issueCondition}`,
       );
   }
 }
 export function IssuesOrderDetails() {}
 
 function IssueOrder(props) {
-  const SupplierListItems = props.suppliers.map(supplier => {
-    return (
-      <option value={supplier.id}>
-        {supplier.name}
-      </option>
-    );
-  });
+  const SupplierListItems = props.suppliers.map(supplier =>
+    <option value={supplier.id}>
+      {supplier.name}
+    </option>,
+  );
 
   return (
     <div className="container">
@@ -58,7 +56,7 @@ function IssueOrder(props) {
       <div className="row">
         <div className="col-md-1">
           <label>
-            {"Condition"}
+            {'Condition'}
           </label>
         </div>
         <div className="col-md-2">
@@ -98,5 +96,10 @@ function IssueOrder(props) {
     </div>
   );
 }
+
+IssueOrder.propTypes = {
+  suppliers: PropTypes.string,
+};
+IssueOrder.defaultProps = { Issues: [] };
 
 export default IssueOrder;

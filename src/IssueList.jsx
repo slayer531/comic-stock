@@ -1,6 +1,6 @@
-import React from 'react';
-import NoImage from './images/not_available_icon.jpg';
+import React, { PropTypes } from 'react';
 import Image from 'react-bootstrap/lib/Image';
+import NoImage from './images/not_available_icon.jpg';
 
 function IssueList(props) {
   const issuesFirstHalf = props.Issues.slice(0, 3);
@@ -41,5 +41,10 @@ function IssueList(props) {
     </div>
   );
 }
+
+IssueList.propTypes = {
+  Issues: PropTypes.string,
+};
+IssueList.defaultProps = { Issues: [] };
 
 export default IssueList;
