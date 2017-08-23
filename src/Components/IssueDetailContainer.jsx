@@ -1,10 +1,10 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import IssueDetail from "../IssueDetail";
-import IssueOrderContainer from "./IssueOrderContainer";
-import Modal from "react-bootstrap/lib/Modal";
-import Button from "react-bootstrap/lib/Button";
-import {APP_ISSUES_VIEW_URL, APP_ORDER} from "./../Constants.jsx";
+import React from 'react';
+import Modal from 'react-bootstrap/lib/Modal';
+import Button from 'react-bootstrap/lib/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import IssueDetail from '../IssueDetail';
+import IssueOrderContainer from './IssueOrderContainer';
+import { APP_ISSUES_VIEW_URL, APP_ORDER } from './../Constants';
 
 class IssueDetailContainer extends React.Component {
   constructor(props) {
@@ -17,20 +17,20 @@ class IssueDetailContainer extends React.Component {
   initialiseState(props) {
     this.state = {
       issue: props.Issue,
-      showModal: false
+      showModal: false,
     };
   }
 
   OrderIssues(issue) {
     this.setState({
-      showModal: true
+      showModal: true,
     });
-    this.history.push(APP_ISSUES_VIEW_URL + "id/" + issue.id + "/" + APP_ORDER);
+    this.history.push(`${APP_ISSUES_VIEW_URL}id/${issue.id}/${APP_ORDER}`);
   }
 
   handleCancelNewOrder() {
     this.setState({
-      showModal: false
+      showModal: false,
     });
   }
 
@@ -39,7 +39,7 @@ class IssueDetailContainer extends React.Component {
       return (
         <div>
           <Button onClick={() => this.OrderIssues(props.Issue)}>
-            {"Order"}
+            {'Order'}
           </Button>
           <div>
             <IssueDetail Issue={props.Issue} />
@@ -47,6 +47,7 @@ class IssueDetailContainer extends React.Component {
         </div>
       );
     }
+    return <br />;
   }
 
   render() {

@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 const IssueCondition = {
   VeryFine: 1,
@@ -98,8 +99,17 @@ function IssueOrder(props) {
 }
 
 IssueOrder.propTypes = {
-  suppliers: PropTypes.string,
+  suppliers: PropTypes.arrayOf(PropTypes.object),
+  onSupplierChange: PropTypes.func,
+  order: PropTypes.objectOf(PropTypes.any),
+  onAmountChange: PropTypes.func,
 };
-IssueOrder.defaultProps = { Issues: [] };
+
+IssueOrder.defaultProps = {
+  suppliers: [],
+  onSupplierChange: {},
+  order: {},
+  onAmountChange: {},
+};
 
 export default IssueOrder;
