@@ -1,10 +1,10 @@
-import React from "react";
-import NoImage from "./images/not_available_icon.jpg";
-import Image from "react-bootstrap/lib/Image";
+import React from 'react';
+import NoImage from './images/not_available_icon.jpg';
+import Image from 'react-bootstrap/lib/Image';
 
 function IssueList(props) {
-  let issuesFirstHalf = props.Issues.slice(0, 3);
-  let issuesSecondHalf = props.Issues.slice(3);
+  const issuesFirstHalf = props.Issues.slice(0, 3);
+  const issuesSecondHalf = props.Issues.slice(3);
 
   return (
     <div className="row">
@@ -20,7 +20,7 @@ function IssueList(props) {
               onClick={() => props.View(issue.id)}
               rounded
             />
-          </div>
+          </div>,
         )}
       </div>
       <div className="col-md-6">
@@ -35,7 +35,7 @@ function IssueList(props) {
               onClick={() => props.View(issue.id)}
               rounded
             />
-          </div>
+          </div>,
         )}
       </div>
     </div>
@@ -43,4 +43,3 @@ function IssueList(props) {
 }
 
 export default IssueList;
-

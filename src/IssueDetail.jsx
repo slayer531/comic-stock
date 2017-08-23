@@ -1,8 +1,8 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import dateFormat from "dateformat";
-import NoImage from "./images/not_available_icon.jpg";
-import Image from "react-bootstrap/lib/Image";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import dateFormat from 'dateformat';
+import Image from 'react-bootstrap/lib/Image';
+import NoImage from './images/not_available_icon.jpg';
 
 function IssueDetail(props) {
   return (
@@ -23,16 +23,16 @@ function IssueDetail(props) {
       </div>
       <div className=".row">
         <label>
-          {"Published on: "}
+          {'Published on: '}
         </label>
         <label>
           {props.Issue.publicationDate
-            ? dateFormat(props.Issue.publicationDate, "longDate")
-            : ""}
+            ? dateFormat(props.Issue.publicationDate, 'longDate')
+            : ''}
         </label>
         <div className=".row">
           <label>
-            {"Published by: "}
+            {'Published by: '}
           </label>
           <label>
             {props.Issue.publisher}
@@ -40,13 +40,13 @@ function IssueDetail(props) {
         </div>
         <div className=".row">
           <Image
-              src={
-                props.Issue.images != null && props.Issue.images.length > 0
-                  ? props.Issue.images[0].pathIncludingExtension
-                  : NoImage
-              }
-              rounded
-            />
+            src={
+              props.Issue.images != null && props.Issue.images.length > 0
+                ? props.Issue.images[0].pathIncludingExtension
+                : NoImage
+            }
+            rounded
+          />
         </div>
       </div>
     </div>
