@@ -60,4 +60,15 @@ Confirmation.propTypes = {
   enableEscape: PropTypes.bool,
 };
 
+Confirmation.defaultProps = {
+  okLabel: '',
+  cancelLabel: '',
+  title: '',
+  confirmation: '',
+  show: false,
+  proceed: {}, // called when ok button is clicked.
+  cancel: {}, // called when cancel button is clicked.
+  dismiss: {}, // called when backdrop is clicked or escaped.
+  enableEscape: false,
+};
 export default confirmable(Confirmation);
