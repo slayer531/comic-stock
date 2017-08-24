@@ -42,7 +42,7 @@ function IssueOrder(props) {
     <div className="container">
       <div className="row">
         <div className="col-md-1">
-          <label>Supplier</label>
+          <label htmlFor="none">Supplier</label>
         </div>
         <div className="col-md-2">
           <select
@@ -56,7 +56,7 @@ function IssueOrder(props) {
       </div>
       <div className="row">
         <div className="col-md-1">
-          <label>
+          <label htmlFor="none">
             {'Condition'}
           </label>
         </div>
@@ -84,7 +84,7 @@ function IssueOrder(props) {
       </div>
       <div className="row">
         <div className="col-md-1">
-          <label>Amount</label>
+          <label htmlFor="none">Amount</label>
         </div>
         <div className="col-md-2">
           <input
