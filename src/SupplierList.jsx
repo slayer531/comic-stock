@@ -45,11 +45,13 @@ function SupplierList(props) {
       <div className="table-responsive">
         <table className="table table-hover">
           <thead>
-            <td className="col-md-1" />
-            <td className="col-md-1" />
-            <td className="col-md-4">Name</td>
-            <td className="col-md-3">City</td>
-            <td className="col-md-3">Reference</td>
+            <tr>
+              <th className="col-md-1" />
+              <th className="col-md-1" />
+              <th className="col-md-4">Name</th>
+              <th className="col-md-3">City</th>
+              <th className="col-md-3">Reference</th>
+            </tr>
           </thead>
           <tbody>
             {currentSuppliers.map(supplier =>
