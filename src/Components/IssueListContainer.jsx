@@ -46,4 +46,5 @@ IssueListContainer.propTypes = {
 IssueListContainer.defaultProps = {
   View: {},
 };
+
 export default IssueListContainer;

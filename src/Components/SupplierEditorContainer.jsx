@@ -1,44 +1,44 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import SupplierEditor from "./../SupplierEditor";
-import {APP_SUPPLIERS_ADD_URL, APP_SUPPLIERS_EDIT_URL} from "./../Constants";
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SupplierEditor from './../SupplierEditor';
+import { APP_SUPPLIERS_ADD_URL, APP_SUPPLIERS_EDIT_URL } from './../Constants';
 
 const PageState = {
   List: 1,
   Edit: 2,
   New: 3,
-  Saved: 4
+  Saved: 4,
 };
 
 class SupplierEditorContainer extends React.Component {
   constructor(props) {
     super();
-    this.initialiseState();    
+    this.initialiseState();
     this.EditSupplier = this.EditSupplier.bind(this);
     this.setPageMode = this.setPageMode.bind(this);
     this.AddNew = this.AddNew.bind(this);
     this.history = props.history;
   }
 
-  initialiseState() {
-    this.state = {
-      supplier: { id: 0, name: "", city: "", reference: "" },
-      PageState: PageState.List
-    };
+  setPageMode(pageState) {
+    this.setState({
+      PageState: pageState,
+    });
   }
 
   EditSupplier(supplier) {
     this.setState({
-      supplier: supplier,
-      PageState: PageState.Edit
+      supplier,
+      PageState: PageState.Edit,
     });
     this.history.push(APP_SUPPLIERS_EDIT_URL + supplier.id);
   }
-
-  setPageMode(pageState) {
-    this.setState({
-      PageState: pageState
-    });
+  initialiseState() {
+    this.state = {
+      supplier: { id: 0, name: '', city: '', reference: '' },
+      PageState: PageState.List,
+    };
   }
 
   AddNew() {
@@ -48,7 +48,7 @@ class SupplierEditorContainer extends React.Component {
 
   render() {
     return (
-      <SupplierEditor 
+      <SupplierEditor
         PageState={this.state.PageState}
         setPageMode={this.setPageMode}
         SaveSupplier={this.SaveSupplier}
@@ -59,9 +59,17 @@ class SupplierEditorContainer extends React.Component {
         reference={this.state.supplier.reference}
         AddNew={this.AddNew}
         history={this.history}
-         />
+      />
     );
   }
 }
 
-export default SupplierEditorContainer
+SupplierEditorContainer.propTypes = {
+  history: PropTypes.objectOf(PropTypes.history),
+};
+
+SupplierEditorContainer.defaultProps = {
+  history: {},
+};
+
+export default SupplierEditorContainer;
