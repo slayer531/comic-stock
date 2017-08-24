@@ -1,7 +1,8 @@
-import React from "react";
-import api from "../api";
-import "bootstrap/dist/css/bootstrap.min.css";
-import IssueList from "./../IssueList";
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import IssueList from './../IssueList';
+import api from '../api';
 
 class IssueListContainer extends React.Component {
   constructor(props) {
@@ -12,16 +13,16 @@ class IssueListContainer extends React.Component {
 
   initialiseState() {
     this.state = {
-      issueData: []
+      issueData: [],
     };
   }
 
   GetIssues() {
     api
-      .get("/Issues")
+      .get('/Issues')
       .then(response => {
         this.setState({
-          issueData: response.data
+          issueData: response.data,
         });
       })
       .catch(e => {
@@ -38,4 +39,11 @@ class IssueListContainer extends React.Component {
   }
 }
 
+IssueListContainer.propTypes = {
+  View: PropTypes.func,
+};
+
+IssueListContainer.defaultProps = {
+  View: {},
+};
 export default IssueListContainer;
