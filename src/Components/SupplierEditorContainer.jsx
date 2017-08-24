@@ -65,7 +65,7 @@ class SupplierEditorContainer extends React.Component {
 }
 
 SupplierEditorContainer.propTypes = {
-  history: PropTypes.objectOf(PropTypes.history),
+  history: PropTypes.objectOf(PropTypes.any),
 };
 
 SupplierEditorContainer.defaultProps = {
