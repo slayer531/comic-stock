@@ -19,7 +19,7 @@ function IssueEditor(props) {
 IssueEditor.propTypes = {
   Issue: PropTypes.objectOf(PropTypes.any),
   View: PropTypes.func,
-  history: PropTypes.objectOf(PropTypes.history),
+  history: PropTypes.objectOf(PropTypes.any),
 };
 IssueEditor.defaultProps = { Issue: {}, View: null, history: {} };
 
