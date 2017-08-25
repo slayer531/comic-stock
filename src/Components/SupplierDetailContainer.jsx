@@ -67,8 +67,8 @@ class SupplierDetailContainer extends React.Component {
         .then(() => {
           this.props.setPageMode(PageState.List);
         })
-          alert("An error occurred while updating the record " + error);
         .catch(error => {
+          alert(`An error occurred while updating the record ${error}`);
           console.error(error);
         });
     } else {
