@@ -35,7 +35,7 @@ function SupplierDetail(props) {
 SupplierDetail.propTypes = {
   name: PropTypes.string,
   setName: PropTypes.func,
-  id: PropTypes.string,
+  id: PropTypes.number,
   city: PropTypes.string,
   setCity: PropTypes.func,
   reference: PropTypes.string,
@@ -47,7 +47,7 @@ SupplierDetail.propTypes = {
 SupplierDetail.defaultProps = {
   name: '',
   setName: {},
-  id: '',
+  id: 0,
   city: '',
   setCity: {},
   reference: '',

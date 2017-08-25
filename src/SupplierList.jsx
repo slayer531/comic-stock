@@ -54,8 +54,8 @@ function SupplierList(props) {
             </tr>
           </thead>
           <tbody>
-            {currentSuppliers.map(supplier =>
-              <tr key={supplier.id}>
+            {currentSuppliers.map((supplier, index) =>
+              <tr key={index}>
                 <td className="col-md-1">
                   <Button
                     bsStyle="danger"
