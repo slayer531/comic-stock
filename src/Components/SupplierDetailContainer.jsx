@@ -44,16 +44,12 @@ class SupplierDetailContainer extends React.Component {
     });
   }
 
-  initialiseState() {
-    this.state = { supplier: { id: 0, name: '', city: '', reference: '' } };
-  }
-
-  CancelEdit(index) {
+  onCancelHandler() {
     this.props.setPageMode(PageState.List);
     this.history.push(APP_SUPPLIERS_URL);
   }
 
-  SaveSupplier() {
+  onSaveSupplierHandler() {
     this.history.push(APP_SUPPLIERS_URL);
 
     if (this.state.supplier.id > 0) {
@@ -120,12 +116,16 @@ class SupplierDetailContainer extends React.Component {
     });
   }
 
+  initialiseState() {
+    this.state = { supplier: { id: 0, name: '', city: '', reference: '' } };
+  }
+
   render() {
     return (
       <SupplierDetail
         {...this.state.supplier}
-        SaveSupplier={() => this.SaveSupplier()}
-        Cancel={i => this.CancelEdit(i)}
+        SaveSupplier={() => this.onSaveSupplierHandler()}
+        Cancel={() => this.onCancelHandler()}
         setName={this.setName}
         setCity={this.setCity}
         setReference={this.setReference}
@@ -136,10 +136,20 @@ class SupplierDetailContainer extends React.Component {
 
 SupplierDetailContainer.propTypes = {
   history: PropTypes.objectOf(PropTypes.any),
+  id: PropTypes.number,
+  name: PropTypes.string,
+  city: PropTypes.string,
+  reference: PropTypes.string,
+  setPageMode: PropTypes.func,
 };
 
 SupplierDetailContainer.defaultProps = {
   history: {},
+  id: 0,
+  name: '',
+  city: '',
+  reference: '',
+  setPageMode: {},
 };
 
 export default SupplierDetailContainer;

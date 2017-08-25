@@ -1,8 +1,9 @@
-import React from "react";
-import api from "../api";
-import "bootstrap/dist/css/bootstrap.css";
-import SupplierList from "../SupplierList";
-import confirm from "../confirm.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.css';
+import api from '../api';
+import SupplierList from '../SupplierList';
+import confirm from '../confirm';
 
 class SupplierListContainer extends React.Component {
   constructor(props) {
@@ -12,23 +13,17 @@ class SupplierListContainer extends React.Component {
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  initialiseState() {
-    this.state = {
-      supplierData: [],
-      supplierDataFiltered: [],
-      currentPage:1,
-      SuppliersToShow:10,
-      SearchString:''
-    };
+  componentDidMount() {
+    this.GetSuppliers();
   }
 
   GetSuppliers() {
     api
-      .get("/Suppliers")
+      .get('/Suppliers')
       .then(response => {
         this.setState({
           supplierData: response.data,
-          supplierDataFiltered: response.data
+          supplierDataFiltered: response.data,
         });
       })
       .catch(e => {
@@ -36,36 +31,42 @@ class SupplierListContainer extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.GetSuppliers();
+  initialiseState() {
+    this.state = {
+      supplierData: [],
+      supplierDataFiltered: [],
+      currentPage: 1,
+      SuppliersToShow: 10,
+      SearchString: '',
+    };
   }
 
   handleOnClickDelete(supplier) {
-    confirm("Are you sure?").then(
+    confirm('Are you sure?').then(
       () => {
         this.DeleteSupplier(supplier);
       },
-      () => {}
+      () => {},
     );
   }
 
-  handlePageClick(event){
-        this.setState({
-          currentPage:event
-      })  
+  handlePageClick(event) {
+    this.setState({
+      currentPage: event,
+    });
   }
 
   FilterSuppliers(event) {
-    var searchString = event.target.value;
-    var supplierDataFiltered = [];
+    let searchString = event.target.value;
+    let supplierDataFiltered = [];
 
-    //SearchString
+    // SearchString
     this.setState({
-        SearchString: searchString
-      });
+      SearchString: searchString,
+    });
 
     if (searchString != null) {
-      supplierDataFiltered = this.state.supplierData.filter(function(item) {
+      supplierDataFiltered = this.state.supplierData.filter(item => {
         searchString = searchString.toLowerCase();
         return (
           item.name.toLowerCase().indexOf(searchString) !== -1 ||
@@ -75,32 +76,31 @@ class SupplierListContainer extends React.Component {
       });
 
       this.setState({
-        supplierDataFiltered: supplierDataFiltered
+        supplierDataFiltered,
       });
     }
   }
 
   DeleteSupplier(supplier) {
     api({
-      method: "delete",
-      url: "/Suppliers/" + supplier.id
+      method: 'delete',
+      url: `/Suppliers/${supplier.id}`,
     })
-      .then(response => {
+      .then(() => {
         api
-          .get("/Suppliers")
+          .get('/Suppliers')
           .then(response => {
             this.setState({
               supplierData: response.data,
-              supplierDataFiltered: response.data            
+              supplierDataFiltered: response.data,
             });
           })
           .catch(e => {
             console.error(e);
           });
       })
-      .catch(function(error) {
-        console.log(error);
-        console.error("failed to delete " + supplier.id);
+      .catch(error => {
+        console.error(`failed to delete ${supplier.id}.${error}`);
       });
   }
 
@@ -118,5 +118,13 @@ class SupplierListContainer extends React.Component {
     );
   }
 }
+
+SupplierListContainer.propTypes = {
+  EditSupplier: PropTypes.func,
+};
+
+SupplierListContainer.defaultProps = {
+  EditSupplier: {},
+};
 
 export default SupplierListContainer;
