@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../api';
 import SupplierDetail from '../SupplierDetail';
 import { APP_SUPPLIERS_URL } from './../Constants';
+import confirm from '../confirm';
 
 const PageState = {
   List: 1,
@@ -64,7 +65,11 @@ class SupplierDetailContainer extends React.Component {
           this.props.setPageMode(PageState.List);
         })
         .catch(error => {
-          alert(`An error occurred while updating the record ${error}`);
+          confirm(`An error occurred while updating the record ${error}`, {
+            okLabel: 'OK',
+            cancelLabel: null,
+            title: 'Error saving supplier',
+          }).then(() => {}, () => {});
           console.error(error);
         });
     } else {
