@@ -42,7 +42,11 @@ class SupplierListContainer extends React.Component {
   }
 
   handleOnClickDelete(supplier) {
-    confirm('Are you sure?').then(
+    confirm('Are you sure that you want to delete this supplier?', {
+      okLabel: 'YES',
+      cancelLabel: 'CANCEL',
+      title: 'Delete Supplier',
+    }).then(
       () => {
         this.DeleteSupplier(supplier);
       },

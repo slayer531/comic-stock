@@ -9,7 +9,7 @@ class Confirmation extends React.Component {
   render() {
     const {
       okLabel = 'OK',
-      cancelLabel = 'Cancel',
+      cancelLabel = 'CANCEL',
       title,
       confirmation,
       show,
@@ -61,8 +61,8 @@ Confirmation.propTypes = {
 };
 
 Confirmation.defaultProps = {
-  okLabel: '',
-  cancelLabel: '',
+  okLabel: 'OK',
+  cancelLabel: 'CANCEL',
   title: '',
   confirmation: '',
   show: false,
