@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
-import api from '../api';
-import SupplierList from '../SupplierList';
-import confirm from '../confirm';
+import api from '../../api';
+import SupplierList from './SupplierList';
+import confirm from './../confirm';
 
 class SupplierListContainer extends React.Component {
   constructor(props) {

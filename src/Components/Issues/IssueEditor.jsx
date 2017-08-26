@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IssueDetailContainer from './Components/IssueDetailContainer';
-import IssueListContainer from './Components/IssueListContainer';
+import IssueDetailContainer from './IssueDetailContainer';
+import IssueListContainer from './IssueListContainer';
 
 function IssueEditor(props) {
   return (
@@ -21,6 +21,7 @@ IssueEditor.propTypes = {
   View: PropTypes.func,
   history: PropTypes.objectOf(PropTypes.any),
 };
+
 IssueEditor.defaultProps = { Issue: {}, View: null, history: {} };
 
 export default IssueEditor;

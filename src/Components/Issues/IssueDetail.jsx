@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import dateFormat from 'dateformat';
 import Image from 'react-bootstrap/lib/Image';
-import NoImage from './images/not_available_icon.jpg';
+import NoImage from './../../images/not_available_icon.jpg';
 
 function IssueDetail(props) {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import api from '../api';
-import SupplierDetail from '../SupplierDetail';
-import { APP_SUPPLIERS_URL } from './../Constants';
+import api from '../../api';
+import SupplierDetail from './SupplierDetail';
+import { APP_SUPPLIERS_URL } from './../../Constants';
 import confirm from '../confirm';
 
 const PageState = {

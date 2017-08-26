@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import IssueList from './../IssueList';
-import api from '../api';
+import IssueList from './IssueList';
+import api from '../../api';
 
 class IssueListContainer extends React.Component {
   constructor(props) {

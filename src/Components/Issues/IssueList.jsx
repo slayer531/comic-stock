@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'react-bootstrap/lib/Image';
 import PropTypes from 'prop-types';
-import NoImage from './images/not_available_icon.jpg';
+import NoImage from './../../images/not_available_icon.jpg';
 
 function IssueList(props) {
   const issuesFirstHalf = props.Issues.slice(0, 3);

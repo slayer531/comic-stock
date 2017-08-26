@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import PropTypes from 'prop-types';
-import SupplierDetailContainer from './Components/SupplierDetailContainer';
-import SupplierListContainer from './Components/SupplierListContainer';
+import SupplierDetailContainer from './SupplierDetailContainer';
+import SupplierListContainer from './SupplierListContainer';
 
 const PageState = {
   List: 1,

@@ -3,10 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './index.css';
-import SupplierEditorContainer from './Components/SupplierEditorContainer';
-import IssueEditorContainer from './Components/IssueEditorContainer';
-import NavigationBar from './NavigationBar';
-import HomePage from './HomePage';
+import SupplierEditorContainer from './Components/Suppliers/SupplierEditorContainer';
+import IssueEditorContainer from './Components/Issues/IssueEditorContainer';
+import NavigationBar from './Components/NavigationBar';
+import HomePage from './Components/HomePage';
 
 import {
   APP_HOME_PAGE,

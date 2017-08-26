@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SupplierEditor from './../SupplierEditor';
-import { APP_SUPPLIERS_ADD_URL, APP_SUPPLIERS_EDIT_URL } from './../Constants';
+import SupplierEditor from './SupplierEditor';
+import {
+  APP_SUPPLIERS_ADD_URL,
+  APP_SUPPLIERS_EDIT_URL,
+} from './../../Constants';
 
 const PageState = {
   List: 1,

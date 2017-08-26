@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import IssueOrder from '../IssueOrder';
-import api from './../api';
+import IssueOrder from './IssueOrder';
+import api from './../../api';
+import confirm from '../confirm';
 
 const IssueCondition = {
   VeryFine: 1,
@@ -80,7 +81,11 @@ class IssueOrderContainer extends React.Component {
         console.info('successfully pushed to API');
       })
       .catch(error => {
-        alert(`An error occurred while submitting the order ${error}`);
+        confirm(`An error occurred while submitting the order ${error}`, {
+          okLabel: 'OK',
+          cancelLabel: null,
+          title: 'Error occurred',
+        }).then(() => {}, () => {});
         console.error(error);
       });
   }

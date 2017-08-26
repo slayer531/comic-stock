@@ -1,5 +1,5 @@
 import { createConfirmation } from 'react-confirm';
-import Confirmation from './Components/Confirmation';
+import Confirmation from './Confirmation';
 
 const defaultConfirmation = createConfirmation(Confirmation);
 

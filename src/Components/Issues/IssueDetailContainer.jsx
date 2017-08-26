@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import IssueDetail from '../IssueDetail';
+import IssueDetail from './IssueDetail';
 import IssueOrderContainer from './IssueOrderContainer';
-import { APP_ISSUES_VIEW_URL, APP_ORDER } from './../Constants';
+import { APP_ISSUES_VIEW_URL, APP_ORDER } from './../../Constants';
 
 class IssueDetailContainer extends React.Component {
   constructor(props) {
@@ -65,5 +66,15 @@ class IssueDetailContainer extends React.Component {
     );
   }
 }
+
+IssueDetailContainer.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
+  Issue: PropTypes.objectOf(PropTypes.any),
+};
+
+IssueDetailContainer.defaultProps = {
+  history: {},
+  Issue: {},
+};
 
 export default IssueDetailContainer;
