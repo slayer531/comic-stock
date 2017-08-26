@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../api';
 import SupplierList from './SupplierList';
 import confirm from './../confirm';
+import history from './../../history';
+import { APP_SUPPLIERS_DELETE_URL, APP_SUPPLIERS_URL } from './../../Constants';
 
 class SupplierListContainer extends React.Component {
   constructor(props) {
@@ -42,6 +44,7 @@ class SupplierListContainer extends React.Component {
   }
 
   handleOnClickDelete(supplier) {
+    history.push(APP_SUPPLIERS_DELETE_URL + supplier.id);
     confirm('Are you sure that you want to delete this supplier?', {
       okLabel: 'YES',
       cancelLabel: 'CANCEL',
@@ -50,7 +53,9 @@ class SupplierListContainer extends React.Component {
       () => {
         this.DeleteSupplier(supplier);
       },
-      () => {},
+      () => {
+        history.push(APP_SUPPLIERS_URL);
+      },
     );
   }
 
@@ -98,6 +103,7 @@ class SupplierListContainer extends React.Component {
               supplierData: response.data,
               supplierDataFiltered: response.data,
             });
+            history.push(APP_SUPPLIERS_URL);
           })
           .catch(e => {
             console.error(e);

@@ -15,7 +15,7 @@ export const APP_HOME_PAGE = '/home';
 export const APP_SUPPLIERS_URL = `${APP_HOME}suppliers/`;
 export const APP_SUPPLIERS_ADD_URL = `${APP_SUPPLIERS_URL}add/`;
 export const APP_SUPPLIERS_EDIT_URL = `${APP_SUPPLIERS_URL}edit/`;
-
+export const APP_SUPPLIERS_DELETE_URL = `${APP_SUPPLIERS_URL}delete/`;
 export const APP_ISSUES_URL = `${APP_HOME}issues/`;
 export const APP_ISSUES_VIEW_URL = `${APP_ISSUES_URL}view/`;
 export const APP_ISSUES_VIEW_ID_URL = `${APP_ISSUES_VIEW_URL}id/:issueId`;
