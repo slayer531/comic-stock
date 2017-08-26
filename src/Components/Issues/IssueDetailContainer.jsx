@@ -6,13 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import IssueDetail from './IssueDetail';
 import IssueOrderContainer from './IssueOrderContainer';
 import { APP_ISSUES_VIEW_URL, APP_ORDER } from './../../Constants';
+import history from './../../history';
 
 class IssueDetailContainer extends React.Component {
   constructor(props) {
     super(props);
     this.initialiseState(props);
     this.handleCancelNewOrder = this.handleCancelNewOrder.bind(this);
-    this.history = props.history;
   }
 
   initialiseState(props) {
@@ -26,7 +26,7 @@ class IssueDetailContainer extends React.Component {
     this.setState({
       showModal: true,
     });
-    this.history.push(`${APP_ISSUES_VIEW_URL}id/${issue.id}/${APP_ORDER}`);
+    history.push(`${APP_ISSUES_VIEW_URL}id/${issue.id}/${APP_ORDER}`);
   }
 
   handleCancelNewOrder() {
@@ -68,12 +68,10 @@ class IssueDetailContainer extends React.Component {
 }
 
 IssueDetailContainer.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any),
   Issue: PropTypes.objectOf(PropTypes.any),
 };
 
 IssueDetailContainer.defaultProps = {
-  history: {},
   Issue: {},
 };
 

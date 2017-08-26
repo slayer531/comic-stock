@@ -34,7 +34,6 @@ function ControlsToShow(props) {
           reference={''}
           SaveSupplier={i => props.SaveSupplier(i)}
           setPageMode={props.setPageMode}
-          history={props.history}
         />
       );
     case PageState.Edit:
@@ -46,7 +45,6 @@ function ControlsToShow(props) {
           reference={props.reference}
           SaveSupplier={i => props.SaveSupplier(i)}
           setPageMode={props.setPageMode}
-          history={props.history}
         />
       );
     case PageState.Saved:
@@ -73,7 +71,6 @@ ControlsToShow.propTypes = {
   EditSupplier: PropTypes.func,
   SaveSupplier: PropTypes.func,
   setPageMode: PropTypes.func,
-  history: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   city: PropTypes.string,
@@ -86,7 +83,6 @@ ControlsToShow.defaultProps = {
   AddNew: {},
   SaveSupplier: {},
   setPageMode: {},
-  history: {},
   id: PropTypes.string,
   name: PropTypes.string,
   city: PropTypes.string,

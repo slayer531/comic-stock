@@ -10,7 +10,7 @@ function IssueEditor(props) {
         <IssueListContainer View={i => props.View(i)} />
       </div>
       <div className="col-md-6">
-        <IssueDetailContainer Issue={props.Issue} history={props.history} />
+        <IssueDetailContainer Issue={props.Issue} />
       </div>
     </div>
   );
@@ -19,9 +19,8 @@ function IssueEditor(props) {
 IssueEditor.propTypes = {
   Issue: PropTypes.objectOf(PropTypes.any),
   View: PropTypes.func,
-  history: PropTypes.objectOf(PropTypes.any),
 };
 
-IssueEditor.defaultProps = { Issue: {}, View: null, history: {} };
+IssueEditor.defaultProps = { Issue: {}, View: null };
 
 export default IssueEditor;

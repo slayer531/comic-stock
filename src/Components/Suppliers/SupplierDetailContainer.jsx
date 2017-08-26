@@ -5,6 +5,7 @@ import api from '../../api';
 import SupplierDetail from './SupplierDetail';
 import { APP_SUPPLIERS_URL, PageState } from './../../Constants';
 import confirm from '../confirm';
+import history from './../../history';
 
 class SupplierDetailContainer extends React.Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class SupplierDetailContainer extends React.Component {
     this.setName = this.setName.bind(this);
     this.setCity = this.setCity.bind(this);
     this.setReference = this.setReference.bind(this);
-    this.history = props.history;
   }
 
   componentDidMount() {
@@ -40,11 +40,11 @@ class SupplierDetailContainer extends React.Component {
 
   onCancelHandler() {
     this.props.setPageMode(PageState.List);
-    this.history.push(APP_SUPPLIERS_URL);
+    history.push(APP_SUPPLIERS_URL);
   }
 
   onSaveSupplierHandler() {
-    this.history.push(APP_SUPPLIERS_URL);
+    history.push(APP_SUPPLIERS_URL);
 
     if (this.state.supplier.id > 0) {
       api
@@ -133,7 +133,6 @@ class SupplierDetailContainer extends React.Component {
 }
 
 SupplierDetailContainer.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.number,
   name: PropTypes.string,
   city: PropTypes.string,
@@ -142,7 +141,6 @@ SupplierDetailContainer.propTypes = {
 };
 
 SupplierDetailContainer.defaultProps = {
-  history: {},
   id: 0,
   name: '',
   city: '',

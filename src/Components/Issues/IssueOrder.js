@@ -1,13 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import PropTypes from 'prop-types';
-
-const IssueCondition = {
-  VeryFine: 1,
-  Fine: 2,
-  Good: 3,
-  Poor: 4,
-};
+import { IssueCondition } from './../../Constants';
 
 export function IssueConditionDisplayValue(issueCondition) {
   switch (issueCondition) {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SupplierEditor from './SupplierEditor';
 import {
@@ -7,15 +6,15 @@ import {
   APP_SUPPLIERS_EDIT_URL,
   PageState,
 } from './../../Constants';
+import history from './../../history';
 
 class SupplierEditorContainer extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.initialiseState();
     this.EditSupplier = this.EditSupplier.bind(this);
     this.setPageMode = this.setPageMode.bind(this);
     this.AddNew = this.AddNew.bind(this);
-    this.history = props.history;
   }
 
   setPageMode(pageState) {
@@ -29,7 +28,7 @@ class SupplierEditorContainer extends React.Component {
       supplier,
       PageState: PageState.Edit,
     });
-    this.history.push(APP_SUPPLIERS_EDIT_URL + supplier.id);
+    history.push(APP_SUPPLIERS_EDIT_URL + supplier.id);
   }
   initialiseState() {
     this.state = {
@@ -40,7 +39,7 @@ class SupplierEditorContainer extends React.Component {
 
   AddNew() {
     this.setPageMode(PageState.New);
-    this.history.push(APP_SUPPLIERS_ADD_URL);
+    history.push(APP_SUPPLIERS_ADD_URL);
   }
 
   render() {
@@ -55,18 +54,13 @@ class SupplierEditorContainer extends React.Component {
         city={this.state.supplier.city}
         reference={this.state.supplier.reference}
         AddNew={this.AddNew}
-        history={this.history}
       />
     );
   }
 }
 
-SupplierEditorContainer.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any),
-};
+SupplierEditorContainer.propTypes = {};
 
-SupplierEditorContainer.defaultProps = {
-  history: {},
-};
+SupplierEditorContainer.defaultProps = {};
 
 export default SupplierEditorContainer;
