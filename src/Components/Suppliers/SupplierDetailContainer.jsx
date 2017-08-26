@@ -3,15 +3,8 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../../api';
 import SupplierDetail from './SupplierDetail';
-import { APP_SUPPLIERS_URL } from './../../Constants';
+import { APP_SUPPLIERS_URL, PageState } from './../../Constants';
 import confirm from '../confirm';
-
-const PageState = {
-  List: 1,
-  Edit: 2,
-  New: 3,
-  Saved: 4,
-};
 
 class SupplierDetailContainer extends React.Component {
   constructor(props) {

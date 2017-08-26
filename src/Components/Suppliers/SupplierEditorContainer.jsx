@@ -5,14 +5,8 @@ import SupplierEditor from './SupplierEditor';
 import {
   APP_SUPPLIERS_ADD_URL,
   APP_SUPPLIERS_EDIT_URL,
+  PageState,
 } from './../../Constants';
-
-const PageState = {
-  List: 1,
-  Edit: 2,
-  New: 3,
-  Saved: 4,
-};
 
 class SupplierEditorContainer extends React.Component {
   constructor(props) {

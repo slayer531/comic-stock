@@ -3,13 +3,7 @@ import Button from 'react-bootstrap/lib/Button';
 import PropTypes from 'prop-types';
 import SupplierDetailContainer from './SupplierDetailContainer';
 import SupplierListContainer from './SupplierListContainer';
-
-const PageState = {
-  List: 1,
-  Edit: 2,
-  New: 3,
-  Saved: 4,
-};
+import { PageState } from './../../Constants';
 
 function AddNewVisibility(props) {
   if (props.PageState === PageState.List) {

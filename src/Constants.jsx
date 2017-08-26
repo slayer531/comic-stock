@@ -27,3 +27,10 @@ export const IssueCondition = {
   Good: 3,
   Poor: 4,
 };
+
+export const PageState = {
+  List: 1,
+  Edit: 2,
+  New: 3,
+  Saved: 4,
+};
