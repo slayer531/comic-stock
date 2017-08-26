@@ -4,13 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import IssueOrder from './IssueOrder';
 import api from './../../api';
 import confirm from '../confirm';
-
-const IssueCondition = {
-  VeryFine: 1,
-  Fine: 2,
-  Good: 3,
-  Poor: 4,
-};
+import { IssueCondition } from '../../Constants';
 
 class IssueOrderContainer extends React.Component {
   constructor(props) {

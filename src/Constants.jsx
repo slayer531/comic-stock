@@ -1,38 +1,29 @@
-const API_BASE_URL = 'http://frontendshowcase.azurewebsites.net/api/';
+export const API_BASE_URL = 'http://frontendshowcase.azurewebsites.net/api/';
 
-const API_SUPPLIERS_ENDPOINT = 'Suppliers/';
-const API_ISSUES_ENDPOINT = 'Issues/';
-const API_ORDERS_ENDPOINT = 'Orders/';
+export const API_SUPPLIERS_ENDPOINT = 'Suppliers/';
+export const API_ISSUES_ENDPOINT = 'Issues/';
+export const API_ORDERS_ENDPOINT = 'Orders/';
 
-const API_SUPPLIERS_URL = API_BASE_URL + API_SUPPLIERS_ENDPOINT;
-const API_ISSUES_URL = API_BASE_URL + API_ISSUES_ENDPOINT;
-const API_ORDERS_URL = API_BASE_URL + API_ORDERS_ENDPOINT;
+export const API_SUPPLIERS_URL = API_BASE_URL + API_SUPPLIERS_ENDPOINT;
+export const API_ISSUES_URL = API_BASE_URL + API_ISSUES_ENDPOINT;
+export const API_ORDERS_URL = API_BASE_URL + API_ORDERS_ENDPOINT;
 
-const APP_HOME = '/';
+export const APP_HOME = '/';
 
-const APP_HOME_PAGE = '/home';
+export const APP_HOME_PAGE = '/home';
 
-const APP_SUPPLIERS_URL = `${APP_HOME}suppliers/`;
-const APP_SUPPLIERS_ADD_URL = `${APP_SUPPLIERS_URL}add/`;
-const APP_SUPPLIERS_EDIT_URL = `${APP_SUPPLIERS_URL}edit/`;
+export const APP_SUPPLIERS_URL = `${APP_HOME}suppliers/`;
+export const APP_SUPPLIERS_ADD_URL = `${APP_SUPPLIERS_URL}add/`;
+export const APP_SUPPLIERS_EDIT_URL = `${APP_SUPPLIERS_URL}edit/`;
 
-const APP_ISSUES_URL = `${APP_HOME}issues/`;
-const APP_ISSUES_VIEW_URL = `${APP_ISSUES_URL}view/`;
-const APP_ISSUES_VIEW_ID_URL = `${APP_ISSUES_VIEW_URL}id/:issueId`;
-const APP_ORDER = 'order/';
+export const APP_ISSUES_URL = `${APP_HOME}issues/`;
+export const APP_ISSUES_VIEW_URL = `${APP_ISSUES_URL}view/`;
+export const APP_ISSUES_VIEW_ID_URL = `${APP_ISSUES_VIEW_URL}id/:issueId`;
+export const APP_ORDER = 'order/';
 
-export {
-  API_BASE_URL,
-  API_SUPPLIERS_URL,
-  API_ISSUES_URL,
-  API_ORDERS_URL,
-  APP_HOME,
-  APP_SUPPLIERS_URL,
-  APP_SUPPLIERS_ADD_URL,
-  APP_SUPPLIERS_EDIT_URL,
-  APP_ISSUES_URL,
-  APP_ISSUES_VIEW_URL,
-  APP_ISSUES_VIEW_ID_URL,
-  APP_ORDER,
-  APP_HOME_PAGE,
+export const IssueCondition = {
+  VeryFine: 1,
+  Fine: 2,
+  Good: 3,
+  Poor: 4,
 };
