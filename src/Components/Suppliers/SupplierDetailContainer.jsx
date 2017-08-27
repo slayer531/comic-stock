@@ -45,8 +45,6 @@ class SupplierDetailContainer extends React.Component {
   }
 
   onSaveSupplierHandler() {
-    history.push(APP_SUPPLIERS_URL);
-
     if (this.state.supplier.id > 0) {
       api
         .put(`/Suppliers/${this.state.supplier.id}`, {
@@ -57,6 +55,7 @@ class SupplierDetailContainer extends React.Component {
         })
         .then(() => {
           this.props.setPageMode(PageState.List);
+          history.push(APP_SUPPLIERS_URL);
         })
         .catch(error => {
           confirm(`An error occurred while updating the record ${error}`, {
