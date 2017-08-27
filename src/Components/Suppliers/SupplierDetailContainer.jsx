@@ -28,13 +28,14 @@ class SupplierDetailContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const supplier = {
+      id: nextProps.id,
+      name: nextProps.name,
+      city: nextProps.city,
+      reference: nextProps.reference,
+    };
     this.setState({
-      supplier: {
-        id: nextProps.id,
-        name: nextProps.name,
-        city: nextProps.city,
-        reference: nextProps.reference,
-      },
+      supplier,
     });
   }
 
