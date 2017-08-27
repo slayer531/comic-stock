@@ -11,7 +11,7 @@ function IssueList(props) {
     <div className="row">
       <div className="col-md-12">
         {issues.map(issue =>
-          <Col xs={2} md={2}>
+          <Col key={issue.id} xs={2} md={2}>
             <Image
               className="thumbnail"
               responsive
