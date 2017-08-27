@@ -37,7 +37,7 @@ body {
 }
 
 .thumbnail{
-  width: 25%;
-  height: 50%;
+  /* width: 25%;
+  height: 50%; */
   cursor: pointer;
 }

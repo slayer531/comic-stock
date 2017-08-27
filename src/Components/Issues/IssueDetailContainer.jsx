@@ -38,7 +38,7 @@ class IssueDetailContainer extends React.Component {
   DisplayIssueDetail(props) {
     if (props.Issue.id) {
       return (
-        <div>
+        <div className="col-md-12">
           <Button onClick={() => this.OrderIssues(props.Issue)}>
             {'Order'}
           </Button>
