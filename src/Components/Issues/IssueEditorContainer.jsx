@@ -14,8 +14,10 @@ class IssueEditorContainer extends React.Component {
   }
 
   componentDidMount() {
-    const issueId = this.props.match.params.issueId;
-    this.GetIssue(issueId);
+    if (this.props.match.params.issueId) {
+      const issueId = this.props.match.params.issueId;
+      this.GetIssue(issueId);
+    }
   }
 
   initialiseState() {
