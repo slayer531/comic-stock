@@ -7,39 +7,39 @@ import NoImage from './../../images/not_available_icon.jpg';
 
 function IssueDetail(props) {
   return (
-    <div className=".container">
-      <div className=".row">
-        <div className=".col-md-2">
-          <h1>
-            {props.Issue.title}
-          </h1>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <div className="row">
+            <h1>
+              {props.Issue.title}
+            </h1>
+          </div>
+          <div className="row">
+            <h4>
+              {props.Issue.description}
+            </h4>
+          </div>
+          <div className="row">
+            <label htmlFor="none">
+              {'Published on: '}
+            </label>
+            <label htmlFor="none">
+              {props.Issue.publicationDate
+                ? dateFormat(props.Issue.publicationDate, 'longDate')
+                : ''}
+            </label>
+          </div>
+          <div className="row">
+            <label htmlFor="none">
+              {'Published by: '}
+            </label>
+            <label htmlFor="none">
+              {props.Issue.publisher}
+            </label>
+          </div>
         </div>
-      </div>
-      <div className=".row">
-        <div className=".col-md-2">
-          <h4>
-            {props.Issue.description}
-          </h4>
-        </div>
-      </div>
-      <div className=".row">
-        <label htmlFor="none">
-          {'Published on: '}
-        </label>
-        <label htmlFor="none">
-          {props.Issue.publicationDate
-            ? dateFormat(props.Issue.publicationDate, 'longDate')
-            : ''}
-        </label>
-        <div className=".row">
-          <label htmlFor="none">
-            {'Published by: '}
-          </label>
-          <label htmlFor="none">
-            {props.Issue.publisher}
-          </label>
-        </div>
-        <div className=".row">
+        <div className="col-md-6">
           <Image
             src={
               props.Issue.images != null && props.Issue.images.length > 0
@@ -47,6 +47,7 @@ function IssueDetail(props) {
                 : NoImage
             }
             rounded
+            responsive
           />
         </div>
       </div>
