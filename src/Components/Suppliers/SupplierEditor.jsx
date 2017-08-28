@@ -1,13 +1,30 @@
 import React from 'react';
 import Button from 'react-bootstrap/lib/Button';
+import Modal from 'react-bootstrap/lib/Modal';
 import PropTypes from 'prop-types';
 import SupplierDetailContainer from './SupplierDetailContainer';
 import SupplierListContainer from './SupplierListContainer';
 import { PageState } from './../../Constants';
 
-function AddNewVisibility(props) {
-  if (props.PageState === PageState.List) {
-    return (
+function SupplierEditor(props) {
+  let id = 0;
+  let name = '';
+  let city = '';
+  let reference = '';
+
+  if (props.PageState === PageState.Edit) {
+    id = props.id;
+    name = props.name;
+    city = props.city;
+    reference = props.reference;
+  } else if (props.PageState === PageState.New) {
+    id = 0;
+    name = '';
+    city = '';
+    reference = '';
+  }
+  return (
+    <div>
       <div className="row">
         <div className="col-md-2">
           <Button bsStyle="primary" onClick={i => props.AddNew(i)}>
@@ -15,88 +32,59 @@ function AddNewVisibility(props) {
           </Button>
         </div>
       </div>
-    );
-  }
-}
-
-function ControlsToShow(props) {
-  switch (props.PageState) {
-    case PageState.List:
-      return (
-        <SupplierListContainer EditSupplier={i => props.EditSupplier(i)} />
-      );
-    case PageState.New:
-      return (
-        <SupplierDetailContainer
-          id={0}
-          name={''}
-          city={''}
-          reference={''}
-          SaveSupplier={i => props.SaveSupplier(i)}
-          setPageMode={props.setPageMode}
-        />
-      );
-    case PageState.Edit:
-      return (
-        <SupplierDetailContainer
-          id={props.id}
-          name={props.name}
-          city={props.city}
-          reference={props.reference}
-          SaveSupplier={i => props.SaveSupplier(i)}
-          setPageMode={props.setPageMode}
-        />
-      );
-    case PageState.Saved:
-      return (
-        <SupplierListContainer EditSupplier={i => props.EditSupplier(i)} />
-      );
-    default:
-      console.error('Invalid Page State encountered');
-  }
-}
-
-function SupplierEditor(props) {
-  return (
-    <div>
-      {AddNewVisibility(props)}
       <br />
-      {ControlsToShow(props)}
+      <SupplierListContainer
+        EditSupplier={i => props.EditSupplier(i)}
+        PageState={props.PageState}
+        supplierData={props.supplierData}
+        supplierDataFiltered={props.supplierData}
+      />
+      <Modal
+        show={
+          props.PageState === PageState.Edit ||
+          props.PageState === PageState.New
+        }
+      >
+        <SupplierDetailContainer
+          id={id}
+          name={name}
+          city={city}
+          reference={reference}
+          SaveSupplier={i => props.SaveSupplier(i)}
+          setPageMode={props.setPageMode}
+          RefreshList={() => props.RefreshList()}
+        />
+      </Modal>
     </div>
   );
 }
 
-ControlsToShow.propTypes = {
-  PageState: PropTypes.objectOf(PropTypes.any),
-  EditSupplier: PropTypes.func,
-  SaveSupplier: PropTypes.func,
-  setPageMode: PropTypes.func,
-  id: PropTypes.string,
+SupplierEditor.propTypes = {
+  PageState: PropTypes.number,
+  id: PropTypes.number,
   name: PropTypes.string,
   city: PropTypes.string,
   reference: PropTypes.string,
-};
-
-ControlsToShow.defaultProps = {
-  PageState: {},
-  EditSupplier: {},
-  AddNew: {},
-  SaveSupplier: {},
-  setPageMode: {},
-  id: PropTypes.string,
-  name: PropTypes.string,
-  city: PropTypes.string,
-  reference: PropTypes.string,
-};
-
-AddNewVisibility.propTypes = {
+  supplierData: PropTypes.arrayOf(PropTypes.any),
   AddNew: PropTypes.func,
-  PageState: PropTypes.objectOf(PropTypes.any),
+  SaveSupplier: PropTypes.func,
+  EditSupplier: PropTypes.func,
+  setPageMode: PropTypes.func,
+  RefreshList: PropTypes.func,
 };
 
-AddNewVisibility.defaultProps = {
-  AddNew: {},
-  PageState: {},
+SupplierEditor.defaultProps = {
+  PageState: 1,
+  id: 0,
+  name: '',
+  city: '',
+  reference: '',
+  supplierData: [],
+  AddNew: () => {},
+  SaveSupplier: () => {},
+  EditSupplier: () => {},
+  setPageMode: () => {},
+  RefreshList: () => {},
 };
 
 export default SupplierEditor;

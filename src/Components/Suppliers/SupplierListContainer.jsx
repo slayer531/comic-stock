@@ -10,36 +10,28 @@ import { APP_SUPPLIERS_DELETE_URL, APP_SUPPLIERS_URL } from './../../Constants';
 class SupplierListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.initialiseState();
+    this.initialiseState(props);
     this.FilterSuppliers = this.FilterSuppliers.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  componentDidMount() {
-    this.GetSuppliers();
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.supplierData) {
+      this.state = {
+        supplierData: nextProps.supplierData,
+        supplierDataFiltered: nextProps.supplierData,
+      };
+    }
   }
 
-  GetSuppliers() {
-    api
-      .get('/Suppliers')
-      .then(response => {
-        this.setState({
-          supplierData: response.data,
-          supplierDataFiltered: response.data,
-        });
-      })
-      .catch(e => {
-        console.error(e);
-      });
-  }
-
-  initialiseState() {
+  initialiseState(props) {
     this.state = {
       supplierData: [],
       supplierDataFiltered: [],
       currentPage: 1,
       SuppliersToShow: 10,
       SearchString: '',
+      PageState: props.PageState,
     };
   }
 
@@ -131,10 +123,12 @@ class SupplierListContainer extends React.Component {
 
 SupplierListContainer.propTypes = {
   EditSupplier: PropTypes.func,
+  supplierData: PropTypes.arrayOf(PropTypes.any),
 };
 
 SupplierListContainer.defaultProps = {
   EditSupplier: {},
+  supplierData: [],
 };
 
 export default SupplierListContainer;

@@ -54,8 +54,9 @@ class SupplierDetailContainer extends React.Component {
           reference: this.state.supplier.reference,
         })
         .then(() => {
-          this.props.setPageMode(PageState.List);
+          this.props.setPageMode(PageState.Saved);
           history.push(APP_SUPPLIERS_URL);
+          this.props.RefreshList();
         })
         .catch(error => {
           confirm(`An error occurred while updating the record ${error}`, {
@@ -74,6 +75,7 @@ class SupplierDetailContainer extends React.Component {
         })
         .then(() => {
           this.props.setPageMode(PageState.List);
+          this.props.RefreshList();
           history.push(APP_SUPPLIERS_URL);
         })
         .catch(error => {
@@ -139,6 +141,7 @@ SupplierDetailContainer.propTypes = {
   city: PropTypes.string,
   reference: PropTypes.string,
   setPageMode: PropTypes.func,
+  RefreshList: PropTypes.func,
 };
 
 SupplierDetailContainer.defaultProps = {
@@ -146,7 +149,8 @@ SupplierDetailContainer.defaultProps = {
   name: '',
   city: '',
   reference: '',
-  setPageMode: {},
+  setPageMode: () => {},
+  RefreshList: () => {},
 };
 
 export default SupplierDetailContainer;
