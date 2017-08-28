@@ -74,6 +74,7 @@ class SupplierDetailContainer extends React.Component {
         })
         .then(() => {
           this.props.setPageMode(PageState.List);
+          history.push(APP_SUPPLIERS_URL);
         })
         .catch(error => {
           console.error(error);
