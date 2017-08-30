@@ -21,6 +21,7 @@ class ComicStrip extends React.Component {
       <div className="container">
         <NavigationBar />
         <Route exact path={APP_HOME_PAGE} component={HomePage} />
+        <Route exact path={'/'} component={HomePage} />
         <Route path={APP_SUPPLIERS_URL} component={SupplierEditorContainer} />
         <Route path={APP_ISSUES_VIEW_ID_URL} component={IssueEditorContainer} />
         <Route exact path={APP_ISSUES_URL} component={IssueEditorContainer} />
