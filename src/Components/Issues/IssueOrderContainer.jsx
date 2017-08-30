@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import IssueOrder from './IssueOrder';
 import api from './../../api';
 import confirm from '../confirm';
-import { IssueCondition } from '../../Constants';
+import { IssueCondition, APP_ISSUES_VIEW_URL } from '../../Constants';
+import history from './../../history';
 
 class IssueOrderContainer extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class IssueOrderContainer extends React.Component {
       )
       .then(() => {
         console.info('successfully pushed to API');
+        history.push(`${APP_ISSUES_VIEW_URL}id/${this.state.issue.id}`);
       })
       .catch(error => {
         confirm(`An error occurred while submitting the order ${error}`, {

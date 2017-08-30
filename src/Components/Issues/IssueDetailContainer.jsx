@@ -33,6 +33,7 @@ class IssueDetailContainer extends React.Component {
     this.setState({
       showModal: false,
     });
+    history.push(`${APP_ISSUES_VIEW_URL}id/${this.props.Issue.id}`);
   }
 
   DisplayIssueDetail(props) {
